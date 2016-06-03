@@ -61,14 +61,15 @@
 	    schema: {
 	        preset: {
 	            type: 'string',
+	            default: ''
 	        }, 
 	        maxAge: {
 	            type: 'number',
-	            default: 2
+	            default: 10 
 	        },
 	        positionSpread: {
 	            type: 'vec3',
-	            default: {x: 0, y: 0, z: 0}
+	            default: {x: 100, y: 100, z: 100}
 	        },
 	        type: {
 	            type: 'number',
@@ -93,11 +94,11 @@
 	        },
 	        velocityValue: {
 	            type: 'vec3',
-	            default: {x: 0, y: 25, z: 0}
+	            default: {x: 1, y: 0.3, z: 1}
 	        },
 	        velocitySpread: {
 	            type: 'vec3',
-	            default: {x: 10, y: 7.5, z: 10}
+	            default: {x: 0.5, y: 1, z: 0.5}
 	        },
 	        wiggle: {
 	            type: 'number',
@@ -113,7 +114,7 @@
 	        },
 	        size: {
 	            type: 'number',
-	            default: 1
+	            default: 1 
 	        },
 	        opacity: {
 	            type: 'number',
@@ -130,7 +131,7 @@
 	        },
 	        particleCount: {
 	            type: 'number',
-	            default: 2000
+	            default: 100
 	        }, 
 	        maxParticleCount: {
 	            type: 'number',
@@ -139,29 +140,60 @@
 	        texture: {
 	            type: 'string',
 	            default: './images/smokeparticle.png'
+	        },
+	        randomize: {
+	            type: 'boolean',
+	            default: true
 	        } 
 	    },
 
 
 	    init: function() {
 
-	        /*this.presets['snow'] = {
+	        this.presets['snow'] = {
 	            rotationAxis: 'x', 
 	            rotationAngle: 3.14, 
 	            accelerationSpread: {x: 0, y: 0, z: 0}, 
 	            accelerationValue: {x: 0, y: 0, z: 0},
+	            velocityValue: {x: 0, y: 5, z: 0},
+	            velocitySpread: {x: 0, y: 7, z: 0}, 
 	            positionSpread: {x: 100, y: 100, z: 100},
-	            texture: this.data.texture,
-	        };*/
+	            texture: './images/smokeparticle.png'
+	        };
 
 	    },
 	 
 
 	    update: function (oldData) {
 
+	        this.clock = new THREE.Clock();
+
+	        if (this.data.preset != '' && this.data.preset in this.presets) {
+
+	            this.initParticleSystem(this.presets[this.data.preset]); 
+
+	        } else {
+
+	            this.initParticleSystem(this.data);
+	        }
+
+	    },
+
+
+	    tick: function(time) {
+
+	        this.particleGroup.tick(this.clock.getDelta());
+	    },
+
+
+	    remove: function() {},
+
+
+	    initParticleSystem: function(settings) {
+
 	        var loader = new THREE.TextureLoader();
 	        var particle_texture = loader.load(
-	            this.data.texture,
+	            settings.texture,
 	            function (texture) {
 	                return texture;
 	            },
@@ -173,83 +205,71 @@
 	            }
 	        );
 
-	        this.clock = new THREE.Clock();
-
 	        this.particleGroup = new SPE.Group({
 	            texture: {
 	                value: particle_texture 
 	            },
-	            maxParticleCount: this.data.maxParticleCount
+	            maxParticleCount: settings.maxParticleCount
 	        });
-
 
 	        /* color */
 	        var color_arr = [];
-	        this.data.color.split(',').forEach((function(c) {
+	        settings.color.split(',').forEach((function(c) {
 	            color_arr.push(new THREE.Color(this.hexToRgb(c).r, this.hexToRgb(c).g, this.hexToRgb(c).b));
 	        }).bind(this));
 
-
 	        var emitter = new SPE.Emitter({
 	            maxAge: {
-	                value: this.data.maxAge
+	                value: settings.maxAge
 	            },
 	            type: {
-	                value: this.data.type
+	                value: settings.type
 	            },
 	            position: {
 	                value: this.el.object3D.position, 
-	                spread: new THREE.Vector3(this.data.positionSpread.x, this.data.positionSpread.y, this.data.positionSpread.z)
+	                spread: new THREE.Vector3(settings.positionSpread.x, settings.positionSpread.y, settings.positionSpread.z),
+	                randomize: settings.randomize
 	                //spreadClamp: new THREE.Vector3( 2, 2, 2 ),
 	                //radius: 4
 	            },
 	            rotation: {
-	                axis: (this.data.rotationAxis=='x'?new THREE.Vector3(1, 0, 0):(this.data.rotationAxis=='y'?new THREE.Vector3(0, 1, 0):(this.data.rotationAxis=='z'?new THREE.Vector3(0, 0, 1):new THREE.Vector3(0, 1, 0)))), 
-	                angle: this.data.rotationAngle,
+	                axis: (settings.rotationAxis=='x'?new THREE.Vector3(1, 0, 0):(settings.rotationAxis=='y'?new THREE.Vector3(0, 1, 0):(settings.rotationAxis=='z'?new THREE.Vector3(0, 0, 1):new THREE.Vector3(0, 1, 0)))), 
+	                angle: settings.rotationAngle,
 	                static: true
 	            },
 	            acceleration: {
-	                value: new THREE.Vector3(this.data.accelerationValue.x, this.data.accelerationValue.y, this.data.accelerationValue.z),
-	                spread: new THREE.Vector3(this.data.accelerationSpread.x, this.data.accelerationSpread.y, this.data.accelerationSpread.z)
+	                value: new THREE.Vector3(settings.accelerationValue.x, settings.accelerationValue.y, settings.accelerationValue.z),
+	                spread: new THREE.Vector3(settings.accelerationSpread.x, settings.accelerationSpread.y, settings.accelerationSpread.z)
 	            },
 	            velocity: {
-	                value: new THREE.Vector3(this.data.velocityValue.x, this.data.velocityValue.y, this.data.velocityValue.z), 
-	                spread: new THREE.Vector3(this.data.velocitySpread.x, this.data.velocitySpread.y, this.data.velocitySpread.z)  
+	                value: new THREE.Vector3(settings.velocityValue.x, settings.velocityValue.y, settings.velocityValue.z), 
+	                spread: new THREE.Vector3(settings.velocitySpread.x, settings.velocitySpread.y, settings.velocitySpread.z)  
 	            },
 	            color: {
 	                value: color_arr 
 	            },
 	            size: {
-	                value: this.data.size
+	                value: settings.size
 	            },
 	            wiggle: {
-	                value: this.data.wiggle
+	                value: settings.wiggle
 	            },
 	            drag: {
-	                value: this.data.drag
+	                value: settings.drag
 	            },
 	            direction: {
-	                value: this.data.direction
+	                value: settings.direction
 	            },
 	            duration: {
-	                value: this.data.duration
+	                value: settings.duration
 	            },
-	            opacity: this.data.opacity,
-	            particleCount: this.data.particleCount
+	            opacity: settings.opacity,
+	            particleCount: settings.particleCount
 	        });
 
 	        this.particleGroup.addEmitter(emitter);
 	        this.el.sceneEl.object3D.add(this.particleGroup.mesh);
 	    },
-
-
-	    tick: function(time) {
-
-	        this.particleGroup.tick(this.clock.getDelta());
-	    },
-
-
-	    remove: function() {},
 
 
 	    hexToRgb: function(hex) {
