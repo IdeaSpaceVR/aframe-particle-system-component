@@ -60,106 +60,123 @@
 
 	    schema: {
 	        preset: {
-	            type: 'string',
-	            default: ''
+	            type: 'string'
 	        }, 
 	        maxAge: {
-	            type: 'number',
-	            default: 10 
+	            type: 'number'
 	        },
 	        positionSpread: {
-	            type: 'vec3',
-	            default: {x: 100, y: 100, z: 100}
+	            type: 'vec3'
 	        },
 	        type: {
-	            type: 'number',
-	            default: SPE.distributions.BOX
-	            /* SPE.distributions.SPHERE, SPE.distributions.DISC */
+	            type: 'number'
 	        },
 	        rotationAxis: {
-	            type: 'string',
-	            default: 'x'
+	            type: 'string'
 	        },
 	        rotationAngle: {
-	            type: 'number',
-	            default: 3.14 
+	            type: 'number'
 	        },
 	        accelerationValue: {
-	            type: 'vec3',
-	            default: {x: 0, y: 0, z: 0}
+	            type: 'vec3'
 	        },
 	        accelerationSpread: {
-	            type: 'vec3',
-	            default: {x: 0, y: 0, z: 0}
+	            type: 'vec3'
 	        },
 	        velocityValue: {
-	            type: 'vec3',
-	            default: {x: 1, y: 0.3, z: 1}
+	            type: 'vec3'
 	        },
 	        velocitySpread: {
-	            type: 'vec3',
-	            default: {x: 0.5, y: 1, z: 0.5}
+	            type: 'vec3'
 	        },
 	        wiggle: {
-	            type: 'number',
-	            default: 0
+	            type: 'number'
 	        },
 	        drag: {
-	            type: 'number',
-	            default: 0 
+	            type: 'number'
 	        },
 	        color: {
-	            type: 'string',
-	            default: '#FFFFFF'
+	            type: 'string'
 	        },
 	        size: {
-	            type: 'number',
-	            default: 1 
+	            type: 'number'
 	        },
 	        opacity: {
-	            type: 'number',
-	            default: 1
+	            type: 'number'
 	        },
 	        direction: {
-	            type: 'number',
-	            default: 1
-	            /* -1 */
+	            type: 'number'
 	        },
 	        duration: {
-	            type: 'number',
-	            default: null 
+	            type: 'number'
 	        },
 	        particleCount: {
-	            type: 'number',
-	            default: 100
+	            type: 'number'
+	        }, 
+	        texture: {
+	            type: 'string'
+	        },
+	        randomize: {
+	            type: 'boolean'
 	        }, 
 	        maxParticleCount: {
 	            type: 'number',
 	            default: 250000
-	        },
-	        texture: {
-	            type: 'string',
-	            default: './images/smokeparticle.png'
-	        },
-	        randomize: {
-	            type: 'boolean',
-	            default: true
-	        } 
+	        }
 	    },
 
 
 	    init: function() {
 
-	        this.presets['snow'] = {
-	            rotationAxis: 'x', 
-	            rotationAngle: 3.14, 
-	            accelerationSpread: {x: 0, y: 0, z: 0}, 
-	            accelerationValue: {x: 0, y: 0, z: 0},
-	            velocityValue: {x: 0, y: 5, z: 0},
-	            velocitySpread: {x: 0, y: 7, z: 0}, 
-	            positionSpread: {x: 100, y: 100, z: 100},
-	            texture: './images/smokeparticle.png'
+	        this.presets = [];
+
+	        /* preset settings can be overwritten */
+
+	        this.presets['default'] = {
+	            maxAge: (this.data.maxAge!==0?this.data.maxAge:2),
+	            positionSpread: (this.data.positionSpread.x!==0&&this.data.positionSpread.y!==0&&this.data.positionSpread.z!==0?this.data.positionSpread:{x:0,y:0,z:0}),
+	            type: (this.data.type!==0?this.data.type:SPE.distributions.BOX), /* SPE.distributions.SPHERE, SPE.distributions.DISC */
+	            rotationAxis: (this.data.rotationAxis!==''?this.data.rotationAxis:'x'), 
+	            rotationAngle: (this.data.rotationAngle!==0?this.data.rotationAngle:0), 
+	            accelerationValue: (this.data.accelerationValue.x!==0&&this.data.accelerationValue.y!==0&&this.data.accelerationValue.z!==0?this.data.accelerationValue:{x: 0, y: -10, z: 0}),
+	            accelerationSpread: (this.data.accelerationSpread.x!==0&&this.data.accelerationSpread.y!==0&&this.data.accelerationSpread.z!==0?this.data.accelerationSpread:{x: 10, y: 0, z: 10}), 
+	            velocityValue: (this.data.velocityValue.x!==0&&this.data.velocityValue.y!==0&&this.data.velocityValue.z!==0?this.data.velocityValue:{x: 0, y: 25, z: 0}),
+	            velocitySpread: (this.data.velocitySpread.x!==0&&this.data.velocitySpread.y!==0&&this.data.velocitySpread.z!==0?this.data.velocitySpread:{x: 10, y: 7.5, z: 10}), 
+	            wiggle: (this.data.wiggle!==0?this.data.wiggle:0),
+	            drag: (this.data.drag!==0?this.data.drag:0),
+	            color: (this.data.color!==''?this.data.color:'#FFFFFF,#0000FF,#FF0000'),
+	            size: (this.data.size!==0?this.data.size:1),
+	            opacity: (this.data.opacity!==0?this.data.opacity:1),
+	            direction: (this.data.direction!==0?this.data.direction:1),
+	            duration: (this.data.duration!=null?this.data.duration:null),
+	            particleCount: (this.data.particleCount!==0?this.data.particleCount:100),
+	            texture: (this.data.texture!==''?this.data.texture:'./images/star2.png'),
+	            randomize: false
 	        };
+
+
+	        this.presets['dust'] = {
+	            maxAge: (this.data.maxAge!==0?this.data.maxAge:20),
+	            positionSpread: (this.data.positionSpread.x!==0&&this.data.positionSpread.y!==0&&this.data.positionSpread.z!==0?this.data.positionSpread:{x:100,y:100,z:100}),
+	            type: (this.data.type!==0?this.data.type:SPE.distributions.BOX), /* SPE.distributions.SPHERE, SPE.distributions.DISC */
+	            rotationAxis: (this.data.rotationAxis!==''?this.data.rotationAxis:'x'), 
+	            rotationAngle: (this.data.rotationAngle!==0?this.data.rotationAngle:3.14), 
+	            accelerationValue: (this.data.accelerationValue.x!==0&&this.data.accelerationValue.y!==0&&this.data.accelerationValue.z!==0?this.data.accelerationValue:{x: 0, y: 0, z: 0}),
+	            accelerationSpread: (this.data.accelerationSpread.x!==0&&this.data.accelerationSpread.y!==0&&this.data.accelerationSpread.z!==0?this.data.accelerationSpread:{x: 0, y: 0, z: 0}), 
+	            velocityValue: (this.data.velocityValue.x!==0&&this.data.velocityValue.y!==0&&this.data.velocityValue.z!==0?this.data.velocityValue:{x: 1, y: 0.3, z: 1}),
+	            velocitySpread: (this.data.velocitySpread.x!==0&&this.data.velocitySpread.y!==0&&this.data.velocitySpread.z!==0?this.data.velocitySpread:{x: 0.5, y: 1, z: 0.5}), 
+	            wiggle: (this.data.wiggle!==0?this.data.wiggle:0),
+	            drag: (this.data.drag!==0?this.data.drag:0),
+	            color: (this.data.color!==''?this.data.color:'#FFFFFF'),
+	            size: (this.data.size!==0?this.data.size:1),
+	            opacity: (this.data.opacity!==0?this.data.opacity:1),
+	            direction: (this.data.direction!==0?this.data.direction:1),
+	            duration: (this.data.duration!=null?this.data.duration:null),
+	            particleCount: (this.data.particleCount!==0?this.data.particleCount:100),
+	            texture: (this.data.texture!==''?this.data.texture:'./images/smokeparticle.png'),
+	            randomize: false
+	        };
+
 
 	    },
 	 
@@ -174,7 +191,7 @@
 
 	        } else {
 
-	            this.initParticleSystem(this.data);
+	            this.initParticleSystem(this.presets['default']);
 	        }
 
 	    },
@@ -209,7 +226,7 @@
 	            texture: {
 	                value: particle_texture 
 	            },
-	            maxParticleCount: settings.maxParticleCount
+	            maxParticleCount: this.data.maxParticleCount
 	        });
 
 	        /* color */
