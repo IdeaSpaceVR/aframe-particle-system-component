@@ -1,0 +1,35 @@
+{
+  "name": "aframe-particle-system-component",
+  "version": "1.0.0",
+  "description": "Particle systems for A-Frame.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IdeaSpaceVR/aframe-particle-system-component.git"
+  },
+  "keywords": [
+    "ideaspace",
+    "ideaspacevr",
+    "webvr",
+    "aframe-vr",
+    "aframe-component",
+    "aframe",
+    "mozvr",
+    "vr"
+  ],
+  "author": "IdeaSpace <info@ideaspacevr.org> (https://www.ideaspacevr.org)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IdeaSpaceVR/aframe-particle-system-component/issues"
+  },
+  "homepage": "https://github.com/IdeaSpaceVR/aframe-particle-system-component#readme",
+  "devDependencies": {
+    "aframe": "^0.2.0"
+  }
+}
