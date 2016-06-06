@@ -6,24 +6,26 @@ Create particle systems in A-Frame.
 
 | Property | Description                                                                               | Default Value |
 | --------- | -----------                                                                               | ------------- |
-| preset   |                                                      | `default`        |
-| maxAge   |                                                      |         |
-| positionSpread   |                                                      |         |
-| type   |                                                      |         |
-| rotationAxis   |                                                      |         |
-| rotationAngle   |                                                      |         |
-| accelerationValue   |                                                      |         |
-| accelerationSpread   |                                                      |         |
-| velocityValue   |                                                      |         |
-| velocitySpread   |                                                      |         |
-| color   |                                                      |         |
-| size   |                                                      |         |
-| direction   |                                                      |         |
-| duration   |                                                      |         |
-| particleCount   |                                                      |         |
-| texture   |                                                      |         |
-| randomize   |                                                      |         |
-| maxParticleCount   |                                                      | 250000        |
+| preset | Preset configuration. Possible values are: `default`, `dust`, `snow`, `rain`.                | `default`        |
+| maxAge | The particle's maximum age in seconds.                                                       | `6`        |
+| positionSpread | Describes this emitter's position variance on a per-particle basis.                  | `0 0 0`        |
+| type   | The default distribution this emitter should use to control its particle's spawn position and force behaviour. Possible values are `1` (box), `2` (sphere), `3` (disc) | 1 (box)       |
+| rotationAxis | Describes this emitter's axis of rotation. Possible values are `x`, `y` and `z`.       | `x`        |
+| rotationAngle | The angle of rotation, given in radians. `Dust` preset is `3.14`.                     | `0`        |
+| accelerationValue | Describes this emitter's base acceleration.                                       | `0, -10, 0`  |
+| accelerationSpread | Describes this emitter's acceleration variance on a per-particle basis.          | `10 0 10`  |
+| velocityValue | Describes this emitter's base velocity.                                               | `0 25 0`   |
+| velocitySpread | Describes this emitter's acceleration variance on a per-particle basis.              | `10 7.5 10` |
+| color | Describes a particle's color. This property is a "value-over-lifetime" property, meaning an array of values can be given to describe specific value changes over a particle's lifetime.                                                     | `#0000FF,#FF0000` |
+| size | Describes a particle's size.                                                      | `1`    |
+| direction | The direction of the emitter. If value is `1`, emitter will start at beginning of particle's lifecycle. If value is `-1`, emitter will start at end of particle's lifecycle and work it's way backwards.                                                     | `1`        |
+| duration | The duration in seconds that this emitter should live for. If not specified, the emitter will emit particles indefinitely.   | `null`         |
+| particleCount | The total number of particles this emitter will hold. NOTE: this is not the number of particles emitted in a second, or anything like that. The number of particles emitted per-second is calculated by particleCount / maxAge (approximately!)                  | `1000`        |
+| texture | The texture used by this emitter.                                              | `./images/star2.png`        |
+| randomize | When a particle is re-spawned, whether it's position should be re-randomised or not. Can incur a performance hit. | `false`         |
+| maxParticleCount   |                                                      | `250000`        |
+
+I am just exposing a subset of all API parameters through this component. See http://squarefeet.github.io/ShaderParticleEngine/docs/api/ for a complete API description.
 
 ### Usage Examples
 
@@ -82,4 +84,9 @@ directory as the component.
 - http://ideaspacevr.github.io/aframe-particle-system-component-snow
 - http://ideaspacevr.github.io/aframe-particle-system-component-dust
 - http://ideaspacevr.github.io/aframe-particle-system-component-custom
+
+### Credits
+
+Based on the awesome ShaderParticleEngine by Squarefeet: https://github.com/squarefeet/ShaderParticleEngine
+
 
