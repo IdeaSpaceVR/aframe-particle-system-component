@@ -83,7 +83,6 @@ directory as the component.
 - http://ideaspacevr.github.io/aframe-particle-system-component-rain
 - http://ideaspacevr.github.io/aframe-particle-system-component-snow
 - http://ideaspacevr.github.io/aframe-particle-system-component-dust
-- http://ideaspacevr.github.io/aframe-particle-system-component-custom
 
 ### Credits
 
