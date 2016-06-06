@@ -87,6 +87,6 @@ directory as the component.
 
 ### Credits
 
-Based on the awesome ShaderParticleEngine by Squarefeet: https://github.com/squarefeet/ShaderParticleEngine
+Based on the ShaderParticleEngine by Squarefeet: https://github.com/squarefeet/ShaderParticleEngine
 
 
