@@ -60,7 +60,8 @@
 
 	    schema: {
 	        preset: {
-	            type: 'string'
+	            type: 'string',
+	            default: ''
 	        }, 
 	        maxAge: {
 	            type: 'number'
@@ -124,7 +125,7 @@
 	        /* preset settings can be overwritten */
 
 	        this.presets['default'] = {
-	            maxAge: (this.data.maxAge!==0?this.data.maxAge:2),
+	            maxAge: (this.data.maxAge!==0?this.data.maxAge:6),
 	            positionSpread: (this.data.positionSpread.x!==0&&this.data.positionSpread.y!==0&&this.data.positionSpread.z!==0?this.data.positionSpread:{x:0,y:0,z:0}),
 	            type: (this.data.type!==0?this.data.type:SPE.distributions.BOX), /* SPE.distributions.SPHERE, SPE.distributions.DISC */
 	            rotationAxis: (this.data.rotationAxis!==''?this.data.rotationAxis:'x'), 
@@ -133,11 +134,11 @@
 	            accelerationSpread: (this.data.accelerationSpread.x!==0&&this.data.accelerationSpread.y!==0&&this.data.accelerationSpread.z!==0?this.data.accelerationSpread:{x: 10, y: 0, z: 10}), 
 	            velocityValue: (this.data.velocityValue.x!==0&&this.data.velocityValue.y!==0&&this.data.velocityValue.z!==0?this.data.velocityValue:{x: 0, y: 25, z: 0}),
 	            velocitySpread: (this.data.velocitySpread.x!==0&&this.data.velocitySpread.y!==0&&this.data.velocitySpread.z!==0?this.data.velocitySpread:{x: 10, y: 7.5, z: 10}), 
-	            color: (this.data.color!==''?this.data.color:'#FFFFFF,#0000FF,#FF0000'),
+	            color: (this.data.color!==''?this.data.color:'#0000FF,#FF0000'),
 	            size: (this.data.size!==0?this.data.size:1),
 	            direction: (this.data.direction!==0?this.data.direction:1),
 	            duration: (this.data.duration!=null?this.data.duration:null),
-	            particleCount: (this.data.particleCount!==0?this.data.particleCount:100),
+	            particleCount: (this.data.particleCount!==0?this.data.particleCount:1000),
 	            texture: (this.data.texture!==''?this.data.texture:'./images/star2.png'),
 	            randomize: false
 	        };
@@ -199,7 +200,7 @@
 	            direction: (this.data.direction!==0?this.data.direction:1),
 	            duration: (this.data.duration!=null?this.data.duration:null),
 	            particleCount: (this.data.particleCount!==0?this.data.particleCount:1000),
-	            texture: (this.data.texture!==''?this.data.texture:'./images/smokeparticle.png'),
+	            texture: (this.data.texture!==''?this.data.texture:'./images/raindrop.png'),
 	            randomize: false
 	        };
 
