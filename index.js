@@ -65,6 +65,9 @@ AFRAME.registerComponent('particle-system', {
         randomize: {
             type: 'boolean'
         }, 
+        opacity: {
+          type: 'number',
+        },
         maxParticleCount: {
             type: 'number',
             default: 250000
@@ -90,6 +93,7 @@ AFRAME.registerComponent('particle-system', {
             velocitySpread: (this.data.velocitySpread.x!==0&&this.data.velocitySpread.y!==0&&this.data.velocitySpread.z!==0?this.data.velocitySpread:{x: 10, y: 7.5, z: 10}), 
             color: (this.data.color!==''?this.data.color:'#0000FF,#FF0000'),
             size: (this.data.size!==0?this.data.size:1),
+            opacity: { value: (this.data.opacity!=0?this.data.opacity:1) },
             direction: (this.data.direction!==0?this.data.direction:1),
             duration: (this.data.duration!=null?this.data.duration:null),
             particleCount: (this.data.particleCount!==0?this.data.particleCount:1000),
@@ -110,6 +114,7 @@ AFRAME.registerComponent('particle-system', {
             velocitySpread: (this.data.velocitySpread.x!==0&&this.data.velocitySpread.y!==0&&this.data.velocitySpread.z!==0?this.data.velocitySpread:{x: 0.5, y: 1, z: 0.5}), 
             color: (this.data.color!==''?this.data.color:'#FFFFFF'),
             size: (this.data.size!==0?this.data.size:1),
+            opacity: { value: (this.data.opacity!=0?this.data.opacity:1) },
             direction: (this.data.direction!==0?this.data.direction:1),
             duration: (this.data.duration!=null?this.data.duration:null),
             particleCount: (this.data.particleCount!==0?this.data.particleCount:100),
@@ -130,6 +135,7 @@ AFRAME.registerComponent('particle-system', {
             velocitySpread: (this.data.velocitySpread.x!==0&&this.data.velocitySpread.y!==0&&this.data.velocitySpread.z!==0?this.data.velocitySpread:{x: 2, y: 0, z: 2}), 
             color: (this.data.color!==''?this.data.color:'#FFFFFF'),
             size: (this.data.size!==0?this.data.size:1),
+            opacity: { value: (this.data.opacity!=0?this.data.opacity:1) },
             direction: (this.data.direction!==0?this.data.direction:1),
             duration: (this.data.duration!=null?this.data.duration:null),
             particleCount: (this.data.particleCount!==0?this.data.particleCount:200),
@@ -150,7 +156,7 @@ AFRAME.registerComponent('particle-system', {
             velocitySpread: (this.data.velocitySpread.x!==0&&this.data.velocitySpread.y!==0&&this.data.velocitySpread.z!==0?this.data.velocitySpread:{x: 10, y: 50, z: 10}), 
             color: (this.data.color!==''?this.data.color:'#FFFFFF'),
             size: (this.data.size!==0?this.data.size:0.4),
-            opacity: { value: 1 },
+            opacity: { value: (this.data.opacity!=0?this.data.opacity:1) },
             direction: (this.data.direction!==0?this.data.direction:1),
             duration: (this.data.duration!=null?this.data.duration:null),
             particleCount: (this.data.particleCount!==0?this.data.particleCount:1000),

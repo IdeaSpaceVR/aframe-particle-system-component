@@ -23,6 +23,7 @@ Create particle systems in A-Frame.
 | particleCount | The total number of particles this emitter will hold. NOTE: this is not the number of particles emitted in a second, or anything like that. The number of particles emitted per-second is calculated by particleCount / maxAge (approximately!)                  | `1000`        |
 | texture | The texture used by this emitter.                                              | `./images/star2.png`        |
 | randomize | When a particle is re-spawned, whether it's position should be re-randomised or not. Can incur a performance hit. | `false`         |
+| opacity | Either a single number to describe the opacity of a particle. | 1 |
 | maxParticleCount   |                                                      | `250000`        |
 
 I am just exposing a subset of all API parameters through this component. See http://squarefeet.github.io/ShaderParticleEngine/docs/api/ for a complete API description.
@@ -44,7 +45,7 @@ I am just exposing a subset of all API parameters through this component. See ht
 ```
 
 
-#### Browser Installation
+### Browser Installation
 
 Install and use by directly including the [browser files](dist). Make sure the images directory (particle textures) is in the same
 directory as the component.
@@ -76,6 +77,10 @@ directory as the component.
   </body>
 </html>
 ```
+
+### npm
+
+https://www.npmjs.com/package/aframe-particle-system-component
 
 ### Examples
 
