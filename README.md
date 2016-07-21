@@ -1,6 +1,6 @@
 # aframe-particle-system-component
 
-Create particle systems in A-Frame.
+Create particle systems with A-Frame.
 
 ### Properties
 
@@ -84,10 +84,10 @@ https://www.npmjs.com/package/aframe-particle-system-component
 
 ### Examples
 
-- http://ideaspacevr.github.io/aframe-particle-system-component-default (view source:https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-default/index.html)
-- http://ideaspacevr.github.io/aframe-particle-system-component-rain (view source:https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-rain/index.html)
-- http://ideaspacevr.github.io/aframe-particle-system-component-snow (view source:https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-snow/index.html)
-- http://ideaspacevr.github.io/aframe-particle-system-component-dust (view source:https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-dust/index.html)
+- http://ideaspacevr.github.io/aframe-particle-system-component-default [view source](https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-default/index.html)
+- http://ideaspacevr.github.io/aframe-particle-system-component-rain [view source](https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-rain/index.html)
+- http://ideaspacevr.github.io/aframe-particle-system-component-snow [view source](https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-snow/index.html)
+- http://ideaspacevr.github.io/aframe-particle-system-component-dust [view source](https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-dust/index.html)
 
 ### Credits
 
