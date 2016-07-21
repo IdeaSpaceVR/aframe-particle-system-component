@@ -84,10 +84,10 @@ https://www.npmjs.com/package/aframe-particle-system-component
 
 ### Examples
 
-- http://ideaspacevr.github.io/aframe-particle-system-component-default
-- http://ideaspacevr.github.io/aframe-particle-system-component-rain
-- http://ideaspacevr.github.io/aframe-particle-system-component-snow
-- http://ideaspacevr.github.io/aframe-particle-system-component-dust
+- http://ideaspacevr.github.io/aframe-particle-system-component-default (view source:https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-default/index.html)
+- http://ideaspacevr.github.io/aframe-particle-system-component-rain (view source:https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-rain/index.html)
+- http://ideaspacevr.github.io/aframe-particle-system-component-snow (view source:https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-snow/index.html)
+- http://ideaspacevr.github.io/aframe-particle-system-component-dust (view source:https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-dust/index.html)
 
 ### Credits
 
