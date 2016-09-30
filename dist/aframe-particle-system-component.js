@@ -143,7 +143,7 @@
 	            direction: (this.data.direction!==0?this.data.direction:1),
 	            duration: (this.data.duration!=null?this.data.duration:null),
 	            particleCount: (this.data.particleCount!==0?this.data.particleCount:1000),
-	            texture: (this.data.texture!==''?this.data.texture:'./images/star2.png'),
+	            texture: (this.data.texture!==''?this.data.texture:'https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/star2.png'),
 	            randomize: false
 	        };
 
@@ -164,7 +164,7 @@
 	            direction: (this.data.direction!==0?this.data.direction:1),
 	            duration: (this.data.duration!=null?this.data.duration:null),
 	            particleCount: (this.data.particleCount!==0?this.data.particleCount:100),
-	            texture: (this.data.texture!==''?this.data.texture:'./images/smokeparticle.png'),
+	            texture: (this.data.texture!==''?this.data.texture:'https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/smokeparticle.png'),
 	            randomize: false
 	        };
 
@@ -185,7 +185,7 @@
 	            direction: (this.data.direction!==0?this.data.direction:1),
 	            duration: (this.data.duration!=null?this.data.duration:null),
 	            particleCount: (this.data.particleCount!==0?this.data.particleCount:200),
-	            texture: (this.data.texture!==''?this.data.texture:'./images/smokeparticle.png'),
+	            texture: (this.data.texture!==''?this.data.texture:'https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/smokeparticle.png'),
 	            randomize: false
 	        };
 
@@ -206,7 +206,7 @@
 	            direction: (this.data.direction!==0?this.data.direction:1),
 	            duration: (this.data.duration!=null?this.data.duration:null),
 	            particleCount: (this.data.particleCount!==0?this.data.particleCount:1000),
-	            texture: (this.data.texture!==''?this.data.texture:'./images/raindrop.png'),
+	            texture: (this.data.texture!==''?this.data.texture:'https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/raindrop.png'),
 	            randomize: false
 	        };
 
