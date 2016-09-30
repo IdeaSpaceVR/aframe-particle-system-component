@@ -216,7 +216,7 @@
 
 	    update: function (oldData) {
 
-	        this.clock = new THREE.Clock();
+	        this.clock = new AFRAME.THREE.Clock();
 
 	        if (this.data.preset != '' && this.data.preset in this.presets) {
 
@@ -241,7 +241,7 @@
 
 	    initParticleSystem: function(settings) {
 
-	        var loader = new THREE.TextureLoader();
+	        var loader = new AFRAME.THREE.TextureLoader();
 	        var particle_texture = loader.load(
 	            settings.texture,
 	            function (texture) {
@@ -265,7 +265,7 @@
 	        /* color */
 	        var color_arr = [];
 	        settings.color.split(',').forEach((function(c) {
-	            color_arr.push(new THREE.Color(this.hexToRgb(c).r, this.hexToRgb(c).g, this.hexToRgb(c).b));
+	            color_arr.push(new AFRAME.THREE.Color(this.hexToRgb(c).r, this.hexToRgb(c).g, this.hexToRgb(c).b));
 	        }).bind(this));
 
 	        var emitter = new SPE.Emitter({
@@ -277,23 +277,23 @@
 	            },
 	            position: {
 	                value: this.el.object3D.position, 
-	                spread: new THREE.Vector3(settings.positionSpread.x, settings.positionSpread.y, settings.positionSpread.z),
+	                spread: new AFRAME.THREE.Vector3(settings.positionSpread.x, settings.positionSpread.y, settings.positionSpread.z),
 	                randomize: settings.randomize
-	                //spreadClamp: new THREE.Vector3( 2, 2, 2 ),
+	                //spreadClamp: new AFRAME.THREE.Vector3( 2, 2, 2 ),
 	                //radius: 4
 	            },
 	            rotation: {
-	                axis: (settings.rotationAxis=='x'?new THREE.Vector3(1, 0, 0):(settings.rotationAxis=='y'?new THREE.Vector3(0, 1, 0):(settings.rotationAxis=='z'?new THREE.Vector3(0, 0, 1):new THREE.Vector3(0, 1, 0)))), 
+	                axis: (settings.rotationAxis=='x'?new AFRAME.THREE.Vector3(1, 0, 0):(settings.rotationAxis=='y'?new AFRAME.THREE.Vector3(0, 1, 0):(settings.rotationAxis=='z'?new AFRAME.THREE.Vector3(0, 0, 1):new AFRAME.THREE.Vector3(0, 1, 0)))), 
 	                angle: settings.rotationAngle,
 	                static: true
 	            },
 	            acceleration: {
-	                value: new THREE.Vector3(settings.accelerationValue.x, settings.accelerationValue.y, settings.accelerationValue.z),
-	                spread: new THREE.Vector3(settings.accelerationSpread.x, settings.accelerationSpread.y, settings.accelerationSpread.z)
+	                value: new AFRAME.THREE.Vector3(settings.accelerationValue.x, settings.accelerationValue.y, settings.accelerationValue.z),
+	                spread: new AFRAME.THREE.Vector3(settings.accelerationSpread.x, settings.accelerationSpread.y, settings.accelerationSpread.z)
 	            },
 	            velocity: {
-	                value: new THREE.Vector3(settings.velocityValue.x, settings.velocityValue.y, settings.velocityValue.z), 
-	                spread: new THREE.Vector3(settings.velocitySpread.x, settings.velocitySpread.y, settings.velocitySpread.z)  
+	                value: new AFRAME.THREE.Vector3(settings.velocityValue.x, settings.velocityValue.y, settings.velocityValue.z), 
+	                spread: new AFRAME.THREE.Vector3(settings.velocitySpread.x, settings.velocitySpread.y, settings.velocitySpread.z)  
 	            },
 	            color: {
 	                value: color_arr 
