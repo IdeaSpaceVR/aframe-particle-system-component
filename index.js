@@ -4,7 +4,6 @@
  * ShaderParticleEngine by Squarefeet (https://github.com/squarefeet).
  */
 
-var THREE = AFRAME.THREE;
 var SPE = require('./lib/SPE.js');
 
 if (typeof AFRAME === 'undefined') {
