@@ -50,7 +50,6 @@
 	 * ShaderParticleEngine by Squarefeet (https://github.com/squarefeet).
 	 */
 
-	var THREE = AFRAME.THREE;
 	var SPE = __webpack_require__(1);
 
 	if (typeof AFRAME === 'undefined') {
