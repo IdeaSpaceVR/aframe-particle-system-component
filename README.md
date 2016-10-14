@@ -89,8 +89,13 @@ https://www.npmjs.com/package/aframe-particle-system-component
 - http://ideaspacevr.github.io/aframe-particle-system-component-snow - [view source](https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-snow/index.html)
 - http://ideaspacevr.github.io/aframe-particle-system-component-dust - [view source](https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-dust/index.html)
 
+### Development
+
+```
+npm install
+npm run dev
+```
+
 ### Credits
 
 Based on the ShaderParticleEngine by Squarefeet: https://github.com/squarefeet/ShaderParticleEngine
-
-

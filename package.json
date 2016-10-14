@@ -3,11 +3,16 @@
   "version": "1.0.2",
   "description": "Particle systems for A-Frame.",
   "main": "index.js",
-  "directories": {
-    "example": "examples"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "browserify examples/main.js -o examples/build.js",
+    "dev": "budo examples/main.js:build.js --dir examples --port 8000 --live --open",
+    "dist": "webpack index.js dist/aframe-example-component.js && webpack -p index.js dist/aframe-example-component.min.js",
+    "lint": "semistandard -v | snazzy",
+    "prepublish": "npm run dist",
+    "preghpages": "npm run build && shx rm -rf gh-pages && shx mkdir gh-pages && shx cp -r examples/* gh-pages",
+    "ghpages": "npm run preghpages && ghpages -p gh-pages",
+    "start": "npm run dev",
+    "unboil": "node scripts/unboil.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +35,15 @@
   },
   "homepage": "https://github.com/IdeaSpaceVR/aframe-particle-system-component#readme",
   "devDependencies": {
-    "aframe": "^0.2.0"
+    "aframe": "^0.3.2",
+    "browserify": "^13.0.0",
+    "browserify-css": "^0.9.1",
+    "budo": "^8.2.2",
+    "randomcolor": "^0.4.4",
+    "semistandard": "^8.0.0",
+    "shelljs": "^0.7.0",
+    "shx": "^0.1.1",
+    "snazzy": "^4.0.0",
+    "webpack": "^1.13.0"
   }
 }
