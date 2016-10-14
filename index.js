@@ -194,7 +194,7 @@ AFRAME.registerComponent('particle-system', {
 
     tick: function(time, dt) {
 
-        this.particleGroup.tick(dt);
+        this.particleGroup.tick(dt / 1000);
     },
 
 
