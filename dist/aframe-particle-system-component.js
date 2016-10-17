@@ -216,7 +216,10 @@
 
 	    update: function (oldData) {
 
-	        this.clock = new THREE.Clock();
+	        // Remove old particle group.
+	        if (this.particleGroup) {
+	            this.el.removeObject3D('particle-system');
+	        }
 
 	        // Remove old particle group.
 	        if (this.particleGroup) {
@@ -237,8 +240,7 @@
 
 	    tick: function(time, dt) {
 
-	        //this.particleGroup.tick(dt);
-	        this.particleGroup.tick(this.clock.getDelta());
+	        this.particleGroup.tick(dt / 1000);
 	    },
 
 
