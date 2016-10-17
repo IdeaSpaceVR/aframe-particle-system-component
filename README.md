@@ -2,6 +2,10 @@
 
 Create particle systems with A-Frame.
 
+![particle-system](https://cloud.githubusercontent.com/assets/674727/19012611/92d694fa-876f-11e6-8b6b-1b93dcd586a8.gif)
+
+[EXAMPLES](http://ideaspacevr.github.io/aframe-particle-system-component/)
+
 ### Properties
 
 | Property | Description                                                                               | Default Value |
@@ -82,15 +86,13 @@ directory as the component.
 
 https://www.npmjs.com/package/aframe-particle-system-component
 
-### Examples
+### Local Development
 
-- http://ideaspacevr.github.io/aframe-particle-system-component-default - [view source](https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-default/index.html)
-- http://ideaspacevr.github.io/aframe-particle-system-component-rain - [view source](https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-rain/index.html)
-- http://ideaspacevr.github.io/aframe-particle-system-component-snow - [view source](https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-snow/index.html)
-- http://ideaspacevr.github.io/aframe-particle-system-component-dust - [view source](https://github.com/IdeaSpaceVR/aframe-particle-system-component/blob/master/examples/aframe-particle-system-component-dust/index.html)
+```
+npm install
+npm run dev
+```
 
 ### Credits
 
 Based on the ShaderParticleEngine by Squarefeet: https://github.com/squarefeet/ShaderParticleEngine
-
-

@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+.sw[ponm]
+examples/build.js
+examples/node_modules/
+gh-pages
+=======
+>>>>>>> b8265df... handle update/remove, use src type for texture
+node_modules/
+npm-debug.log
