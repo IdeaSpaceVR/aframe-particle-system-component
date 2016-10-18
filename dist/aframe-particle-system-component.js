@@ -61,7 +61,8 @@
 	    schema: {
 	        preset: {
 	            type: 'string',
-	            default: ''
+	            default: '',
+	            oneOf: ['default', 'dust', 'snow', 'rain']
 	        },
 	        maxAge: {
 	            type: 'number'
