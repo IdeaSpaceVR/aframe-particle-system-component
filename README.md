@@ -4,7 +4,10 @@ Create particle systems with A-Frame.
 
 ![particle-system](https://cloud.githubusercontent.com/assets/674727/19012611/92d694fa-876f-11e6-8b6b-1b93dcd586a8.gif)
 
-[EXAMPLES](http://ideaspacevr.github.io/aframe-particle-system-component/)
+[Stars Example](http://ideaspacevr.github.io/aframe-particle-system-component-default/)
+[Dust Example](http://ideaspacevr.github.io/aframe-particle-system-component-dust/)
+[Rain Example](http://ideaspacevr.github.io/aframe-particle-system-component-rain/)
+[Snow Example](http://ideaspacevr.github.io/aframe-particle-system-component-snow/)
 
 ### Properties
 
