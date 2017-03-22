@@ -18,15 +18,66 @@
         display: block;
         padding: 15px 0;
       }
+      img {
+        max-width: 320px;
+      }
+      ul {
+        display: flex;
+        list-style: none;
+        flex-wrap: wrap;
+        padding: 5px 0 0;
+      }
+      ul li {
+        margin-right: 30px;
+        padding: 5px 0 30px;
+      }
+      ul a {
+        background-size: cover;
+        display: block;
+        padding: 0;
+        height: 320px;
+        width: 320px;
+      }
+      ul h3,
+      ul p {
+        max-width: 320px;
+      }
     </style>
   </head>
   <body>
     <h1>A-Frame Particle System Component</h1>
-    <a href="examples/stars/">Stars (Default)</a>
-    <a href="examples/dust/">Dust</a>
-    <a href="examples/rain/">Rain</a>
-    <a href="examples/snow/">Snow</a>
-    <a href="examples/colors/">Colors</a>
+
+    <ul>
+      <li>
+        <a href="examples/stars/" style="background-image: url(https://cloud.githubusercontent.com/assets/674727/24215732/e605ec7a-0ef6-11e7-92dc-38f62a3d4671.gif)"></a>
+        <h3>Stars</h3>
+        <p>Default preset.</p>
+      </li>
+
+      <li>
+        <a href="examples/dust/" style="background-image: url(https://cloud.githubusercontent.com/assets/674727/24215735/e606a0ac-0ef6-11e7-9582-9cbd9eed0709.gif)"></a>
+        <h3>Dust</h3>
+        <p></p>
+      </li>
+
+      <li>
+        <a href="examples/rain/" style="background-image: url(https://cloud.githubusercontent.com/assets/674727/24215744/edec173e-0ef6-11e7-8694-0feef653e4d8.gif)"></a>
+        <h3>Rain</h3>
+        <p></p>
+      </li>
+
+      <li>
+        <a href="examples/snow/" style="background-image: url(https://cloud.githubusercontent.com/assets/674727/24215734/e6069472-0ef6-11e7-9baa-28fa1fd88b88.gif)"></a>
+        <h3>Snow</h3>
+        <p></p>
+      </li>
+
+      <li>
+        <a href="examples/colors/" style="background-image: url(https://cloud.githubusercontent.com/assets/674727/24215733/e6060caa-0ef6-11e7-80fe-075b7c33675b.gif)"></a>
+        <h3>Colors</h3>
+        <p></p>
+      </li>
+    </ul>
 
     <!-- GitHub Corner. -->
     <a href="https://github.com/IdeaSpaceVR/aframe-particle-system-component" class="github-corner">
