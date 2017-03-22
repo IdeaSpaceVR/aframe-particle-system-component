@@ -2,7 +2,7 @@
 
 Particle system component for [A-Frame](https://aframe.io).
 
-![particle-system](https://cloud.githubusercontent.com/assets/674727/19012611/92d694fa-876f-11e6-8b6b-1b93dcd586a8.gif)
+![Particle System](https://cloud.githubusercontent.com/assets/674727/24214966/6d43ef14-0ef4-11e7-973f-c561b81d175f.gif)
 
 ### Examples
 
