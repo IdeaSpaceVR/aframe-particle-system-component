@@ -61,7 +61,7 @@ AFRAME.registerComponent('particle-system', {
             type: 'number'
         },
         texture: {
-            type: 'src'
+            type: 'asset'
         },
         randomize: {
             type: 'boolean'
