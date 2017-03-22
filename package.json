@@ -3,16 +3,25 @@
   "version": "1.0.6",
   "description": "Particle systems for A-Frame.",
   "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "browserify": "^13.0.0",
+    "budo": "^8.2.2",
+    "ghpages": "^0.0.8",
+    "semistandard": "^8.0.0",
+    "shx": "^0.1.1",
+    "webpack": "^1.13.0"
+  },
   "scripts": {
-    "build": "browserify examples/main.js -o examples/build.js",
-    "dev": "budo examples/main.js:build.js --dir examples --port 8000 --live --open",
+    "dev": "budo index.js:../../dist/aframe-particle-system-component.min.js --port 8000 --live --open",
     "dist": "webpack index.js dist/aframe-particle-system-component.js && webpack -p index.js dist/aframe-particle-system-component.min.js",
     "lint": "semistandard -v | snazzy",
     "prepublish": "npm run dist",
     "preghpages": "npm run build && shx rm -rf gh-pages && shx mkdir gh-pages && shx cp -r examples/* gh-pages",
     "ghpages": "npm run preghpages && ghpages -p gh-pages",
-    "start": "npm run dev",
-    "unboil": "node scripts/unboil.js"
+    "start": "npm run dev"
   },
   "repository": {
     "type": "git",
@@ -35,7 +44,6 @@
   },
   "homepage": "https://github.com/IdeaSpaceVR/aframe-particle-system-component#readme",
   "devDependencies": {
-    "aframe": "^0.5.0",
     "browserify": "^13.0.0",
     "browserify-css": "^0.9.1",
     "budo": "^8.2.2",

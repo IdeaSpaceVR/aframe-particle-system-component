@@ -3,14 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>A-Frame Particle System Component Example</title>
-    <meta name="description" content="Hello, World!">
+    <meta name="description" content="A-Frame Particle System Component Example">
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
-    <script src="../../dist/aframe-particle-system-component.min.js"></script>
+    <script src="../dist/aframe-particle-system-component.min.js"></script>
   </head>
   <body>
     <a-scene>
 
-      <a-entity position="0 2.25 -15" particle-system="preset: snow"></a-entity>
+      <!-- particle system uses 'default' preset, setting custom colors //-->
+      <a-entity position="0 2.25 -15" particle-system="color: #EF0000,#44CC00"></a-entity>
 
       <a-sphere position="0 1.25 -1" radius="1.25" color="#EF2D5E"></a-sphere>
       <a-box position="-1 0.5 1" rotation="0 45 0" width="1" height="1" depth="1"  color="#4CC3D9"></a-box>

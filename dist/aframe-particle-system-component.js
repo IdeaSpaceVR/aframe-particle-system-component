@@ -92,7 +92,7 @@
 	            type: 'vec3'
 	        },
 	        color: {
-	            type: 'string'
+	            type: 'array'
 	        },
 	        size: {
 	            type: 'number'
@@ -107,7 +107,7 @@
 	            type: 'number'
 	        },
 	        texture: {
-	            type: 'src'
+	            type: 'asset'
 	        },
 	        randomize: {
 	            type: 'boolean'
@@ -138,7 +138,7 @@
 	            accelerationSpread: (this.data.accelerationSpread.x!==0||this.data.accelerationSpread.y!==0||this.data.accelerationSpread.z!==0?this.data.accelerationSpread:{x: 10, y: 0, z: 10}),
 	            velocityValue: (this.data.velocityValue.x!==0||this.data.velocityValue.y!==0||this.data.velocityValue.z!==0?this.data.velocityValue:{x: 0, y: 25, z: 0}),
 	            velocitySpread: (this.data.velocitySpread.x!==0||this.data.velocitySpread.y!==0||this.data.velocitySpread.z!==0?this.data.velocitySpread:{x: 10, y: 7.5, z: 10}),
-	            color: (this.data.color!==''?this.data.color:'#0000FF,#FF0000'),
+	            color: (this.data.color.length?this.data.color:['#0000FF','#FF0000']),
 	            size: (this.data.size!==0?this.data.size:1),
 	            opacity: { value: (this.data.opacity!=0?this.data.opacity:1) },
 	            direction: (this.data.direction!==0?this.data.direction:1),
@@ -159,7 +159,7 @@
 	            accelerationSpread: (this.data.accelerationSpread.x!==0||this.data.accelerationSpread.y!==0||this.data.accelerationSpread.z!==0?this.data.accelerationSpread:{x: 0, y: 0, z: 0}),
 	            velocityValue: (this.data.velocityValue.x!==0||this.data.velocityValue.y!==0||this.data.velocityValue.z!==0?this.data.velocityValue:{x: 1, y: 0.3, z: 1}),
 	            velocitySpread: (this.data.velocitySpread.x!==0||this.data.velocitySpread.y!==0||this.data.velocitySpread.z!==0?this.data.velocitySpread:{x: 0.5, y: 1, z: 0.5}),
-	            color: (this.data.color!==''?this.data.color:'#FFFFFF'),
+	            color: (this.data.color.length?this.data.color:['#FFFFFF']),
 	            size: (this.data.size!==0?this.data.size:1),
 	            opacity: { value: (this.data.opacity!=0?this.data.opacity:1) },
 	            direction: (this.data.direction!==0?this.data.direction:1),
@@ -180,7 +180,7 @@
 	            accelerationSpread: (this.data.accelerationSpread.x!==0||this.data.accelerationSpread.y!==0||this.data.accelerationSpread.z!==0?this.data.accelerationSpread:{x: 0.2, y: 0, z: 0.2}),
 	            velocityValue: (this.data.velocityValue.x!==0||this.data.velocityValue.y!==0||this.data.velocityValue.z!==0?this.data.velocityValue:{x: 0, y: 8, z: 0}),
 	            velocitySpread: (this.data.velocitySpread.x!==0||this.data.velocitySpread.y!==0||this.data.velocitySpread.z!==0?this.data.velocitySpread:{x: 2, y: 0, z: 2}),
-	            color: (this.data.color!==''?this.data.color:'#FFFFFF'),
+	            color: (this.data.color.length?this.data.color:['#FFFFFF']),
 	            size: (this.data.size!==0?this.data.size:1),
 	            opacity: { value: (this.data.opacity!=0?this.data.opacity:1) },
 	            direction: (this.data.direction!==0?this.data.direction:1),
@@ -201,7 +201,7 @@
 	            accelerationSpread: (this.data.accelerationSpread.x!==0||this.data.accelerationSpread.y!==0||this.data.accelerationSpread.z!==0?this.data.accelerationSpread:{x: 2, y: 1, z: 2}),
 	            velocityValue: (this.data.velocityValue.x!==0||this.data.velocityValue.y!==0||this.data.velocityValue.z!==0?this.data.velocityValue:{x: 0, y: 75, z: 0}),
 	            velocitySpread: (this.data.velocitySpread.x!==0||this.data.velocitySpread.y!==0||this.data.velocitySpread.z!==0?this.data.velocitySpread:{x: 10, y: 50, z: 10}),
-	            color: (this.data.color!==''?this.data.color:'#FFFFFF'),
+	            color: (this.data.color.length?this.data.color:['#FFFFFF']),
 	            size: (this.data.size!==0?this.data.size:0.4),
 	            opacity: { value: (this.data.opacity!=0?this.data.opacity:1) },
 	            direction: (this.data.direction!==0?this.data.direction:1),
@@ -276,12 +276,6 @@
 	            maxParticleCount: this.data.maxParticleCount
 	        });
 
-	        /* color */
-	        var color_arr = [];
-	        settings.color.split(',').forEach((function(c) {
-	            color_arr.push(new THREE.Color(this.hexToRgb(c).r, this.hexToRgb(c).g, this.hexToRgb(c).b));
-	        }).bind(this));
-
 	        var emitter = new SPE.Emitter({
 	            maxAge: {
 	                value: settings.maxAge
@@ -310,7 +304,7 @@
 	                spread: new THREE.Vector3(settings.velocitySpread.x, settings.velocitySpread.y, settings.velocitySpread.z)
 	            },
 	            color: {
-	                value: color_arr
+	                value: settings.color.map(function(c) { return new THREE.Color(c); })
 	            },
 	            size: {
 	                value: settings.size
@@ -329,20 +323,7 @@
 
 	        this.particleGroup.addEmitter(emitter);
 	        this.el.setObject3D('particle-system', this.particleGroup.mesh);
-	    },
-
-
-	    hexToRgb: function(hex) {
-
-	        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-	        return result ? {
-	            r: parseInt(result[1], 16),
-	            g: parseInt(result[2], 16),
-	            b: parseInt(result[3], 16)
-	        } : null;
-
 	    }
-
 	});
 
 
