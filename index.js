@@ -176,11 +176,6 @@ AFRAME.registerComponent('particle-system', {
             this.el.removeObject3D('particle-system');
         }
 
-        // Remove old particle group.
-        if (this.particleGroup) {
-            this.el.removeObject3D('particle-system');
-        }
-
         if (this.data.preset != '' && this.data.preset in this.presets) {
 
             this.initParticleSystem(this.presets[this.data.preset]);
