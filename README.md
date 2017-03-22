@@ -6,10 +6,11 @@ Particle system component for [A-Frame](https://aframe.io).
 
 ### Examples
 
-- [Stars](https://ideaspacevr.github.io/aframe-particle-system-component-default/)
-- [Dust](https://ideaspacevr.github.io/aframe-particle-system-component-dust/)
-- [Rain](https://ideaspacevr.github.io/aframe-particle-system-component-rain/)
-- [Snow](https://ideaspacevr.github.io/aframe-particle-system-component-snow/)
+- [Stars](https://ideaspacevr.github.io/aframe-particle-system-component/examples/stars/)
+- [Dust](https://ideaspacevr.github.io/aframe-particle-system-component/examples/dust/)
+- [Rain](https://ideaspacevr.github.io/aframe-particle-system-component/examples/rain/)
+- [Snow](https://ideaspacevr.github.io/aframe-particle-system-component/examples/snow/)
+- [Colors](https://ideaspacevr.github.io/aframe-particle-system-component/examples/colors/)
 
 ### Properties
 
