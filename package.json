@@ -1,12 +1,12 @@
 {
   "name": "aframe-particle-system-component",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Particle systems for A-Frame.",
   "main": "index.js",
   "directories": {
     "example": "examples"
   },
-  "dependencies": {
+  "devDependencies": {
     "browserify": "^13.0.0",
     "budo": "^8.2.2",
     "ghpages": "^0.0.8",
