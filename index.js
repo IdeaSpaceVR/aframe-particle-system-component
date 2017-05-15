@@ -72,6 +72,11 @@ AFRAME.registerComponent('particle-system', {
         maxParticleCount: {
             type: 'number',
             default: 250000
+        },
+        blending: {
+            type: 'number',
+            default: THREE.AdditiveBlending,
+            oneOf: [THREE.NoBlending,THREE.NormalBlending,THREE.AdditiveBlending,THREE.SubtractiveBlending,THREE.MultiplyBlending]
         }
     },
 
@@ -222,7 +227,8 @@ AFRAME.registerComponent('particle-system', {
             texture: {
                 value: particle_texture
             },
-            maxParticleCount: this.data.maxParticleCount
+            maxParticleCount: this.data.maxParticleCount,
+            blending: this.data.blending
         });
 
         var emitter = new SPE.Emitter({

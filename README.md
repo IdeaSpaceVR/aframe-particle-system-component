@@ -36,6 +36,7 @@ This component exposes only a subset of the [ShaderParticleEngine API](http://sq
 | texture            | The texture used by this emitter.                                                                                                                                                                                                               | `./images/star2.png` |
 | randomize          | When a particle is re-spawned, whether it's position should be re-randomised or not. Can incur a performance hit.                                                                                                                               | `false`              |
 | opacity            | Either a single number to describe the opacity of a particle.                                                                                                                                                                                   | `1`                  |
+| blending           | The blending mode of the particles. Possible values are `0` (no blending), `1` (normal), `2` (additive), `3` (subtractive), `4` (multiply)                                                                                                      | `2`                  |
 | maxParticleCount   |                                                                                                                                                                                                                                                 | `250000`             |
 
 ### Usage

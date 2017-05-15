@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Particles component for A-Frame.
@@ -118,6 +118,11 @@
 	        maxParticleCount: {
 	            type: 'number',
 	            default: 250000
+	        },
+	        blending: {
+	            type: 'number',
+	            default: THREE.AdditiveBlending,
+	            oneOf: [THREE.NoBlending,THREE.NormalBlending,THREE.AdditiveBlending,THREE.SubtractiveBlending,THREE.MultiplyBlending]
 	        }
 	    },
 
@@ -222,11 +227,6 @@
 	            this.el.removeObject3D('particle-system');
 	        }
 
-	        // Remove old particle group.
-	        if (this.particleGroup) {
-	            this.el.removeObject3D('particle-system');
-	        }
-
 	        if (this.data.preset != '' && this.data.preset in this.presets) {
 
 	            this.initParticleSystem(this.presets[this.data.preset]);
@@ -273,7 +273,8 @@
 	            texture: {
 	                value: particle_texture
 	            },
-	            maxParticleCount: this.data.maxParticleCount
+	            maxParticleCount: this.data.maxParticleCount,
+	            blending: this.data.blending
 	        });
 
 	        var emitter = new SPE.Emitter({
@@ -327,9 +328,9 @@
 	});
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* shader-particle-engine 1.0.5
 	 * 
@@ -3856,5 +3857,5 @@
 	    return this;
 	};
 
-/***/ }
+/***/ })
 /******/ ]);
