@@ -277,6 +277,7 @@ AFRAME.registerComponent('particle-system', {
         });
 
         this.particleGroup.addEmitter(emitter);
+        this.particleGroup.mesh.frustumCulled = false;
         this.el.setObject3D('particle-system', this.particleGroup.mesh);
     }
 });

@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Particles component for A-Frame.
@@ -323,14 +323,15 @@
 	        });
 
 	        this.particleGroup.addEmitter(emitter);
+	        this.particleGroup.mesh.frustumCulled = false;
 	        this.el.setObject3D('particle-system', this.particleGroup.mesh);
 	    }
 	});
 
 
-/***/ }),
+/***/ },
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* shader-particle-engine 1.0.5
 	 * 
@@ -3857,5 +3858,5 @@
 	    return this;
 	};
 
-/***/ })
+/***/ }
 /******/ ]);
