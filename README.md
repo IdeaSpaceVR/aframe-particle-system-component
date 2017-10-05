@@ -68,7 +68,7 @@ Install and use by directly including the [browser files](dist).
     <meta charset="utf-8">
     <title>A-Frame Particle System Component Example</title>
     <meta name="description" content="Hello, World!">
-    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
   </head>
   <body>
