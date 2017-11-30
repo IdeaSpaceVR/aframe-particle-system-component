@@ -239,7 +239,6 @@ AFRAME.registerComponent('particle-system', {
                 value: settings.type
             },
             position: {
-                value: this.el.object3D.position,
                 spread: new THREE.Vector3(settings.positionSpread.x, settings.positionSpread.y, settings.positionSpread.z),
                 randomize: settings.randomize
                 //spreadClamp: new THREE.Vector3( 2, 2, 2 ),
