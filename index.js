@@ -77,6 +77,10 @@ AFRAME.registerComponent('particle-system', {
             type: 'number',
             default: THREE.AdditiveBlending,
             oneOf: [THREE.NoBlending,THREE.NormalBlending,THREE.AdditiveBlending,THREE.SubtractiveBlending,THREE.MultiplyBlending]
+        },
+        enabled: {
+            type:'boolean',
+            default:true
         }
     },
 
@@ -190,6 +194,11 @@ AFRAME.registerComponent('particle-system', {
             this.initParticleSystem(this.presets['default']);
         }
 
+        if(this.data.enabled === true) {
+            this.startParticles()
+        } else {
+            this.stopParticles()
+        }
     },
 
 
@@ -204,6 +213,14 @@ AFRAME.registerComponent('particle-system', {
         // Remove particle system.
         if (!this.particleGroup) { return; }
         this.el.removeObject3D('particle-system');
+    },
+
+    startParticles: function() {
+        this.particleGroup.emitters.forEach(function(em) { em.enable() });
+    },
+
+    stopParticles: function() {
+        this.particleGroup.emitters.forEach(function(em) { em.disable() });
     },
 
 
@@ -239,7 +256,6 @@ AFRAME.registerComponent('particle-system', {
                 value: settings.type
             },
             position: {
-                value: this.el.object3D.position,
                 spread: new THREE.Vector3(settings.positionSpread.x, settings.positionSpread.y, settings.positionSpread.z),
                 randomize: settings.randomize
                 //spreadClamp: new THREE.Vector3( 2, 2, 2 ),
