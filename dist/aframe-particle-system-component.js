@@ -123,6 +123,10 @@
 	            type: 'number',
 	            default: THREE.AdditiveBlending,
 	            oneOf: [THREE.NoBlending,THREE.NormalBlending,THREE.AdditiveBlending,THREE.SubtractiveBlending,THREE.MultiplyBlending]
+	        },
+	        enabled: {
+	            type:'boolean',
+	            default:true
 	        }
 	    },
 
@@ -236,6 +240,11 @@
 	            this.initParticleSystem(this.presets['default']);
 	        }
 
+	        if(this.data.enabled === true) {
+	            this.startParticles()
+	        } else {
+	            this.stopParticles()
+	        }
 	    },
 
 
@@ -250,6 +259,14 @@
 	        // Remove particle system.
 	        if (!this.particleGroup) { return; }
 	        this.el.removeObject3D('particle-system');
+	    },
+
+	    startParticles: function() {
+	        this.particleGroup.emitters.forEach(function(em) { em.enable() });
+	    },
+
+	    stopParticles: function() {
+	        this.particleGroup.emitters.forEach(function(em) { em.disable() });
 	    },
 
 
@@ -285,7 +302,6 @@
 	                value: settings.type
 	            },
 	            position: {
-	                value: this.el.object3D.position,
 	                spread: new THREE.Vector3(settings.positionSpread.x, settings.positionSpread.y, settings.positionSpread.z),
 	                randomize: settings.randomize
 	                //spreadClamp: new THREE.Vector3( 2, 2, 2 ),
@@ -1240,7 +1256,8 @@
 
 	        THREE.ShaderChunk.common,
 	        THREE.ShaderChunk.logdepthbuf_pars_vertex,
-
+	        THREE.ShaderChunk.fog_pars_vertex,
+	        
 	        SPE.shaderChunks.branchAvoidanceFunctions,
 	        SPE.shaderChunks.unpackColor,
 	        SPE.shaderChunks.unpackRotationAxis,
@@ -1376,7 +1393,8 @@
 	        '    gl_Position = projectionMatrix * mvPos;',
 
 	        THREE.ShaderChunk.logdepthbuf_vertex,
-
+	        THREE.ShaderChunk.fog_vertex,
+	        
 	        '}'
 	    ].join( '\n' ),
 
@@ -1403,10 +1421,10 @@
 	        THREE.ShaderChunk.logdepthbuf_fragment,
 
 	        '    outgoingLight = vColor.xyz * rotatedTexture.xyz;',
-
+			'    gl_FragColor = vec4( outgoingLight.xyz, rotatedTexture.w * vColor.w );',
+	        
 	        THREE.ShaderChunk.fog_fragment,
 
-	        '    gl_FragColor = vec4( outgoingLight.xyz, rotatedTexture.w * vColor.w );',
 	        '}'
 	    ].join( '\n' )
 	};
@@ -3857,6 +3875,7 @@
 
 	    return this;
 	};
+
 
 /***/ }
 /******/ ]);
