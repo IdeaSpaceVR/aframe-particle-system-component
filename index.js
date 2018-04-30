@@ -252,9 +252,7 @@ AFRAME.registerComponent('particle-system', {
             maxAge: {
                 value: settings.maxAge
             },
-            type: {
-                value: settings.type
-            },
+            type: settings.type,
             position: {
                 spread: new THREE.Vector3(settings.positionSpread.x, settings.positionSpread.y, settings.positionSpread.z),
                 randomize: settings.randomize
