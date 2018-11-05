@@ -33,6 +33,9 @@ AFRAME.registerComponent('particle-system', {
         rotationAngle: {
             type: 'number'
         },
+        rotationAngleSpread: {
+            type: 'number'
+        },
         accelerationValue: {
             type: 'vec3'
         },
@@ -97,6 +100,7 @@ AFRAME.registerComponent('particle-system', {
             type: (this.data.type!==0?this.data.type:SPE.distributions.BOX), /* SPE.distributions.SPHERE, SPE.distributions.DISC */
             rotationAxis: (this.data.rotationAxis!==''?this.data.rotationAxis:'x'),
             rotationAngle: (this.data.rotationAngle!==0?this.data.rotationAngle:0),
+            rotationAngleSpread: (this.data.rotationAngleSpread!==0?this.data.rotationAngleSpread:0),
             accelerationValue: (this.data.accelerationValue.x!==0||this.data.accelerationValue.y!==0||this.data.accelerationValue.z!==0?this.data.accelerationValue:{x: 0, y: -10, z: 0}),
             accelerationSpread: (this.data.accelerationSpread.x!==0||this.data.accelerationSpread.y!==0||this.data.accelerationSpread.z!==0?this.data.accelerationSpread:{x: 10, y: 0, z: 10}),
             velocityValue: (this.data.velocityValue.x!==0||this.data.velocityValue.y!==0||this.data.velocityValue.z!==0?this.data.velocityValue:{x: 0, y: 25, z: 0}),
@@ -118,6 +122,7 @@ AFRAME.registerComponent('particle-system', {
             type: (this.data.type!==0?this.data.type:SPE.distributions.BOX), /* SPE.distributions.SPHERE, SPE.distributions.DISC */
             rotationAxis: (this.data.rotationAxis!==''?this.data.rotationAxis:'x'),
             rotationAngle: (this.data.rotationAngle!==0?this.data.rotationAngle:3.14),
+            rotationAngleSpread: (this.data.rotationAngleSpread!==0?this.data.rotationAngleSpread:0),
             accelerationValue: (this.data.accelerationValue.x!==0||this.data.accelerationValue.y!==0||this.data.accelerationValue.z!==0?this.data.accelerationValue:{x: 0, y: 0, z: 0}),
             accelerationSpread: (this.data.accelerationSpread.x!==0||this.data.accelerationSpread.y!==0||this.data.accelerationSpread.z!==0?this.data.accelerationSpread:{x: 0, y: 0, z: 0}),
             velocityValue: (this.data.velocityValue.x!==0||this.data.velocityValue.y!==0||this.data.velocityValue.z!==0?this.data.velocityValue:{x: 1, y: 0.3, z: 1}),
@@ -139,6 +144,7 @@ AFRAME.registerComponent('particle-system', {
             type: (this.data.type!==0?this.data.type:SPE.distributions.BOX), /* SPE.distributions.SPHERE, SPE.distributions.DISC */
             rotationAxis: (this.data.rotationAxis!==''?this.data.rotationAxis:'x'),
             rotationAngle: (this.data.rotationAngle!==0?this.data.rotationAngle:3.14),
+            rotationAngleSpread: (this.data.rotationAngleSpread!==0?this.data.rotationAngleSpread:0),
             accelerationValue: (this.data.accelerationValue.x!==0||this.data.accelerationValue.y!==0||this.data.accelerationValue.z!==0?this.data.accelerationValue:{x: 0, y: 0, z: 0}),
             accelerationSpread: (this.data.accelerationSpread.x!==0||this.data.accelerationSpread.y!==0||this.data.accelerationSpread.z!==0?this.data.accelerationSpread:{x: 0.2, y: 0, z: 0.2}),
             velocityValue: (this.data.velocityValue.x!==0||this.data.velocityValue.y!==0||this.data.velocityValue.z!==0?this.data.velocityValue:{x: 0, y: 8, z: 0}),
@@ -160,6 +166,7 @@ AFRAME.registerComponent('particle-system', {
             type: (this.data.type!==0?this.data.type:SPE.distributions.BOX), /* SPE.distributions.SPHERE, SPE.distributions.DISC */
             rotationAxis: (this.data.rotationAxis!==''?this.data.rotationAxis:'x'),
             rotationAngle: (this.data.rotationAngle!==0?this.data.rotationAngle:3.14),
+            rotationAngleSpread: (this.data.rotationAngleSpread!==0?this.data.rotationAngleSpread:0),
             accelerationValue: (this.data.accelerationValue.x!==0||this.data.accelerationValue.y!==0||this.data.accelerationValue.z!==0?this.data.accelerationValue:{x: 0, y: 3, z: 0}),
             accelerationSpread: (this.data.accelerationSpread.x!==0||this.data.accelerationSpread.y!==0||this.data.accelerationSpread.z!==0?this.data.accelerationSpread:{x: 2, y: 1, z: 2}),
             velocityValue: (this.data.velocityValue.x!==0||this.data.velocityValue.y!==0||this.data.velocityValue.z!==0?this.data.velocityValue:{x: 0, y: 75, z: 0}),
@@ -264,6 +271,7 @@ AFRAME.registerComponent('particle-system', {
             rotation: {
                 axis: (settings.rotationAxis=='x'?new THREE.Vector3(1, 0, 0):(settings.rotationAxis=='y'?new THREE.Vector3(0, 1, 0):(settings.rotationAxis=='z'?new THREE.Vector3(0, 0, 1):new THREE.Vector3(0, 1, 0)))),
                 angle: settings.rotationAngle,
+                angleSpread: settings.rotationAngleSpread,
                 static: true
             },
             acceleration: {
