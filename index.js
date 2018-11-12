@@ -19,58 +19,76 @@ AFRAME.registerComponent('particle-system', {
             oneOf: ['default', 'dust', 'snow', 'rain']
         },
         maxAge: {
-            type: 'number'
+            type: 'number',
+            default: 6
         },
         positionSpread: {
-            type: 'vec3'
+            type: 'vec3',
+            default: { x: 0, y: 0, z: 0 }
         },
         type: {
-            type: 'number'
+            type: 'number',
+            default: SPE.distributions.BOX
         },
         rotationAxis: {
-            type: 'string'
+            type: 'string',
+            default: 'x'
         },
         rotationAngle: {
-            type: 'number'
+            type: 'number',
+            default: 0
         },
         rotationAngleSpread: {
-            type: 'number'
+            type: 'number',
+            default: 0
         },
         accelerationValue: {
-            type: 'vec3'
+            type: 'vec3',
+            default: { x: 0, y: -10, z: 0 }
         },
         accelerationSpread: {
-            type: 'vec3'
+            type: 'vec3',
+            default: { x: 10, y: 0, z: 10 }
         },
         velocityValue: {
-            type: 'vec3'
+            type: 'vec3',
+            default: { x: 0, y: 25, z: 0 }
         },
         velocitySpread: {
-            type: 'vec3'
+            type: 'vec3',
+            default: { x: 10, y: 7.5, z: 10 }
         },
         color: {
-            type: 'array'
+            type: 'array',
+            default: [ '#0000FF', '#FF0000' ]
         },
         size: {
-            type: 'number'
+            type: 'number',
+            default: 1
         },
         direction: {
-            type: 'number'
+            type: 'number',
+            default: 1
         },
         duration: {
-            type: 'number'
+            type: 'number',
+            default: null
         },
         particleCount: {
-            type: 'number'
+            type: 'number',
+            default: 1000
         },
         texture: {
-            type: 'asset'
+            type: 'asset',
+            default: 'https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/star2.png'
         },
         randomize: {
-            type: 'boolean'
+            type: 'boolean',
+            default: false
         },
         opacity: {
           type: 'number',
+          default: 1
         },
         maxParticleCount: {
             type: 'number',
@@ -90,95 +108,49 @@ AFRAME.registerComponent('particle-system', {
 
     init: function() {
 
-        this.presets = [];
+        this.presets = {};
 
         /* preset settings can be overwritten */
 
-        this.presets['default'] = {
-            maxAge: (this.data.maxAge!==0?this.data.maxAge:6),
-            positionSpread: (this.data.positionSpread.x!==0||this.data.positionSpread.y!==0||this.data.positionSpread.z!==0?this.data.positionSpread:{x:0,y:0,z:0}),
-            type: (this.data.type!==0?this.data.type:SPE.distributions.BOX), /* SPE.distributions.SPHERE, SPE.distributions.DISC */
-            rotationAxis: (this.data.rotationAxis!==''?this.data.rotationAxis:'x'),
-            rotationAngle: (this.data.rotationAngle!==0?this.data.rotationAngle:0),
-            rotationAngleSpread: (this.data.rotationAngleSpread!==0?this.data.rotationAngleSpread:0),
-            accelerationValue: (this.data.accelerationValue.x!==0||this.data.accelerationValue.y!==0||this.data.accelerationValue.z!==0?this.data.accelerationValue:{x: 0, y: -10, z: 0}),
-            accelerationSpread: (this.data.accelerationSpread.x!==0||this.data.accelerationSpread.y!==0||this.data.accelerationSpread.z!==0?this.data.accelerationSpread:{x: 10, y: 0, z: 10}),
-            velocityValue: (this.data.velocityValue.x!==0||this.data.velocityValue.y!==0||this.data.velocityValue.z!==0?this.data.velocityValue:{x: 0, y: 25, z: 0}),
-            velocitySpread: (this.data.velocitySpread.x!==0||this.data.velocitySpread.y!==0||this.data.velocitySpread.z!==0?this.data.velocitySpread:{x: 10, y: 7.5, z: 10}),
-            color: (this.data.color.length?this.data.color:['#0000FF','#FF0000']),
-            size: (this.data.size!==0?this.data.size:1),
-            opacity: { value: (this.data.opacity!=0?this.data.opacity:1) },
-            direction: (this.data.direction!==0?this.data.direction:1),
-            duration: (this.data.duration!=0?this.data.duration:null),
-            particleCount: (this.data.particleCount!==0?this.data.particleCount:1000),
-            texture: (this.data.texture!==''?this.data.texture:'https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/star2.png'),
-            randomize: false
-        };
-
-
         this.presets['dust'] = {
-            maxAge: (this.data.maxAge!==0?this.data.maxAge:20),
-            positionSpread: (this.data.positionSpread.x!==0||this.data.positionSpread.y!==0||this.data.positionSpread.z!==0?this.data.positionSpread:{x:100,y:100,z:100}),
-            type: (this.data.type!==0?this.data.type:SPE.distributions.BOX), /* SPE.distributions.SPHERE, SPE.distributions.DISC */
-            rotationAxis: (this.data.rotationAxis!==''?this.data.rotationAxis:'x'),
-            rotationAngle: (this.data.rotationAngle!==0?this.data.rotationAngle:3.14),
-            rotationAngleSpread: (this.data.rotationAngleSpread!==0?this.data.rotationAngleSpread:0),
-            accelerationValue: (this.data.accelerationValue.x!==0||this.data.accelerationValue.y!==0||this.data.accelerationValue.z!==0?this.data.accelerationValue:{x: 0, y: 0, z: 0}),
-            accelerationSpread: (this.data.accelerationSpread.x!==0||this.data.accelerationSpread.y!==0||this.data.accelerationSpread.z!==0?this.data.accelerationSpread:{x: 0, y: 0, z: 0}),
-            velocityValue: (this.data.velocityValue.x!==0||this.data.velocityValue.y!==0||this.data.velocityValue.z!==0?this.data.velocityValue:{x: 1, y: 0.3, z: 1}),
-            velocitySpread: (this.data.velocitySpread.x!==0||this.data.velocitySpread.y!==0||this.data.velocitySpread.z!==0?this.data.velocitySpread:{x: 0.5, y: 1, z: 0.5}),
-            color: (this.data.color.length?this.data.color:['#FFFFFF']),
-            size: (this.data.size!==0?this.data.size:1),
-            opacity: { value: (this.data.opacity!=0?this.data.opacity:1) },
-            direction: (this.data.direction!==0?this.data.direction:1),
-            duration: (this.data.duration!=0?this.data.duration:null),
-            particleCount: (this.data.particleCount!==0?this.data.particleCount:100),
-            texture: (this.data.texture!==''?this.data.texture:'https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/smokeparticle.png'),
-            randomize: false
+            maxAge: 20,
+            positionSpread: {x:100,y:100,z:100},
+            rotationAngle: 3.14,
+            accelerationValue: {x: 0, y: 0, z: 0},
+            accelerationSpread: {x: 0, y: 0, z: 0},
+            velocityValue: {x: 1, y: 0.3, z: 1},
+            velocitySpread: {x: 0.5, y: 1, z: 0.5},
+            color: ['#FFFFFF'],
+            particleCount: 100,
+            texture: 'https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/smokeparticle.png'
         };
 
 
         this.presets['snow'] = {
-            maxAge: (this.data.maxAge!==0?this.data.maxAge:20),
-            positionSpread: (this.data.positionSpread.x!==0||this.data.positionSpread.y!==0||this.data.positionSpread.z!==0?this.data.positionSpread:{x:100,y:100,z:100}),
-            type: (this.data.type!==0?this.data.type:SPE.distributions.BOX), /* SPE.distributions.SPHERE, SPE.distributions.DISC */
-            rotationAxis: (this.data.rotationAxis!==''?this.data.rotationAxis:'x'),
-            rotationAngle: (this.data.rotationAngle!==0?this.data.rotationAngle:3.14),
-            rotationAngleSpread: (this.data.rotationAngleSpread!==0?this.data.rotationAngleSpread:0),
-            accelerationValue: (this.data.accelerationValue.x!==0||this.data.accelerationValue.y!==0||this.data.accelerationValue.z!==0?this.data.accelerationValue:{x: 0, y: 0, z: 0}),
-            accelerationSpread: (this.data.accelerationSpread.x!==0||this.data.accelerationSpread.y!==0||this.data.accelerationSpread.z!==0?this.data.accelerationSpread:{x: 0.2, y: 0, z: 0.2}),
-            velocityValue: (this.data.velocityValue.x!==0||this.data.velocityValue.y!==0||this.data.velocityValue.z!==0?this.data.velocityValue:{x: 0, y: 8, z: 0}),
-            velocitySpread: (this.data.velocitySpread.x!==0||this.data.velocitySpread.y!==0||this.data.velocitySpread.z!==0?this.data.velocitySpread:{x: 2, y: 0, z: 2}),
-            color: (this.data.color.length?this.data.color:['#FFFFFF']),
-            size: (this.data.size!==0?this.data.size:1),
-            opacity: { value: (this.data.opacity!=0?this.data.opacity:1) },
-            direction: (this.data.direction!==0?this.data.direction:1),
-            duration: (this.data.duration!=0?this.data.duration:null),
-            particleCount: (this.data.particleCount!==0?this.data.particleCount:200),
-            texture: (this.data.texture!==''?this.data.texture:'https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/smokeparticle.png'),
-            randomize: false
+            maxAge: 20,
+            positionSpread: {x:100,y:100,z:100},
+            rotationAngle: 3.14,
+            accelerationValue: {x: 0, y: 0, z: 0},
+            accelerationSpread: {x: 0.2, y: 0, z: 0.2},
+            velocityValue: {x: 0, y: 8, z: 0},
+            velocitySpread: {x: 2, y: 0, z: 2},
+            color: ['#FFFFFF'],
+            particleCount: 200,
+            texture: 'https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/smokeparticle.png'
         };
 
 
         this.presets['rain'] = {
-            maxAge: (this.data.maxAge!==0?this.data.maxAge:1),
-            positionSpread: (this.data.positionSpread.x!==0||this.data.positionSpread.y!==0||this.data.positionSpread.z!==0?this.data.positionSpread:{x:100,y:100,z:100}),
-            type: (this.data.type!==0?this.data.type:SPE.distributions.BOX), /* SPE.distributions.SPHERE, SPE.distributions.DISC */
-            rotationAxis: (this.data.rotationAxis!==''?this.data.rotationAxis:'x'),
-            rotationAngle: (this.data.rotationAngle!==0?this.data.rotationAngle:3.14),
-            rotationAngleSpread: (this.data.rotationAngleSpread!==0?this.data.rotationAngleSpread:0),
-            accelerationValue: (this.data.accelerationValue.x!==0||this.data.accelerationValue.y!==0||this.data.accelerationValue.z!==0?this.data.accelerationValue:{x: 0, y: 3, z: 0}),
-            accelerationSpread: (this.data.accelerationSpread.x!==0||this.data.accelerationSpread.y!==0||this.data.accelerationSpread.z!==0?this.data.accelerationSpread:{x: 2, y: 1, z: 2}),
-            velocityValue: (this.data.velocityValue.x!==0||this.data.velocityValue.y!==0||this.data.velocityValue.z!==0?this.data.velocityValue:{x: 0, y: 75, z: 0}),
-            velocitySpread: (this.data.velocitySpread.x!==0||this.data.velocitySpread.y!==0||this.data.velocitySpread.z!==0?this.data.velocitySpread:{x: 10, y: 50, z: 10}),
-            color: (this.data.color.length?this.data.color:['#FFFFFF']),
-            size: (this.data.size!==0?this.data.size:0.4),
-            opacity: { value: (this.data.opacity!=0?this.data.opacity:1) },
-            direction: (this.data.direction!==0?this.data.direction:1),
-            duration: (this.data.duration!=0?this.data.duration:null),
-            particleCount: (this.data.particleCount!==0?this.data.particleCount:1000),
-            texture: (this.data.texture!==''?this.data.texture:'https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/raindrop.png'),
-            randomize: false
+            maxAge: 1,
+            positionSpread: {x:100,y:100,z:100},
+            rotationAngle: 3.14,
+            accelerationValue: {x: 0, y: 3, z: 0},
+            accelerationSpread: {x: 2, y: 1, z: 2},
+            velocityValue: {x: 0, y: 75, z: 0},
+            velocitySpread: {x: 10, y: 50, z: 10},
+            color: ['#FFFFFF'],
+            size: 0.4,
+            texture: 'https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/raindrop.png'
         };
 
 
@@ -192,19 +164,32 @@ AFRAME.registerComponent('particle-system', {
             this.el.removeObject3D('particle-system');
         }
 
-        if (this.data.preset != '' && this.data.preset in this.presets) {
+        // Set the selected preset, if any, or use an empty object to keep schema defaults
+        this.preset = this.presets[this.data.preset] || {};
 
-            this.initParticleSystem(this.presets[this.data.preset]);
-
-        } else {
-
-            this.initParticleSystem(this.presets['default']);
+        // Get custom, preset, or default data for each property defined in the schema
+        for (var key in this.data) {
+            this.data[key] = this.applyPreset(key);
         }
+
+        this.initParticleSystem(this.data);
 
         if(this.data.enabled === true) {
             this.startParticles()
         } else {
             this.stopParticles()
+        }
+    },
+
+
+    applyPreset: function (key) {
+        // !this.attrValue[key] = the user did not set a custom value
+        // this.preset[key] = there exists a value for this key in the selected preset
+        if (!this.attrValue[key] && this.preset[key]) {
+            return this.preset[key];
+        } else {
+            // Otherwise stick to the user or schema default value
+            return this.data[key];
         }
     },
 
@@ -251,8 +236,8 @@ AFRAME.registerComponent('particle-system', {
             texture: {
                 value: particle_texture
             },
-            maxParticleCount: this.data.maxParticleCount,
-            blending: this.data.blending
+            maxParticleCount: settings.maxParticleCount,
+            blending: settings.blending
         });
 
         var emitter = new SPE.Emitter({
@@ -296,7 +281,7 @@ AFRAME.registerComponent('particle-system', {
                 value: settings.direction
             },
             duration: settings.duration,
-            opacity: settings.opacity,
+            opacity: { value: settings.opacity },
             particleCount: settings.particleCount
         });
 
