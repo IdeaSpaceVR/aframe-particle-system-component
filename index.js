@@ -281,7 +281,7 @@ AFRAME.registerComponent('particle-system', {
                 value: settings.direction
             },
             duration: settings.duration,
-            opacity: { value: settings.opacity.map(function (o) { return Number.parseFloat(o); }) },
+            opacity: { value: settings.opacity.map(function (o) { return parseFloat(o); }) },
             particleCount: settings.particleCount
         });
 
