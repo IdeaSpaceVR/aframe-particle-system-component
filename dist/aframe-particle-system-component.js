@@ -151,13 +151,13 @@ AFRAME.registerComponent('particle-system', {
             type: 'asset',
             default: 'https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/star2.png'
         },
-        randomize: {
+        randomise: {
             type: 'boolean',
             default: false
         },
         opacity: {
-          type: 'number',
-          default: 1
+          type: 'array',
+          default: [ '1' ]
         },
         maxParticleCount: {
             type: 'number',
@@ -318,7 +318,7 @@ AFRAME.registerComponent('particle-system', {
             },
             position: {
                 spread: new THREE.Vector3(settings.positionSpread.x, settings.positionSpread.y, settings.positionSpread.z),
-                randomize: settings.randomize
+                randomise: settings.randomise
                 //spreadClamp: new THREE.Vector3( 2, 2, 2 ),
                 //radius: 4
             },
@@ -350,7 +350,7 @@ AFRAME.registerComponent('particle-system', {
                 value: settings.direction
             },
             duration: settings.duration,
-            opacity: { value: settings.opacity },
+            opacity: { value: settings.opacity.map(function (o) { return parseFloat(o); }) },
             particleCount: settings.particleCount
         });
 
