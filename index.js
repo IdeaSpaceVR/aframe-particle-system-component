@@ -87,8 +87,8 @@ AFRAME.registerComponent('particle-system', {
             default: false
         },
         opacity: {
-          type: 'number',
-          default: 1
+          type: 'array',
+          default: [ '1' ]
         },
         maxParticleCount: {
             type: 'number',
@@ -281,7 +281,7 @@ AFRAME.registerComponent('particle-system', {
                 value: settings.direction
             },
             duration: settings.duration,
-            opacity: { value: settings.opacity },
+            opacity: { value: settings.opacity.map(function (o) { return parseFloat(o); }) },
             particleCount: settings.particleCount
         });
 
