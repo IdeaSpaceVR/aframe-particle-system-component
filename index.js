@@ -58,6 +58,18 @@ AFRAME.registerComponent('particle-system', {
             type: 'vec3',
             default: { x: 10, y: 7.5, z: 10 }
         },
+        dragValue: {
+            type: 'number',
+            default: 0
+        },
+        dragSpread: {
+            type: 'number',
+            default: 0
+        },
+        dragRandomise: {
+            type: 'boolean',
+            default: false
+        },
         color: {
             type: 'array',
             default: [ '#0000FF', '#FF0000' ]
@@ -266,6 +278,11 @@ AFRAME.registerComponent('particle-system', {
             velocity: {
                 value: new THREE.Vector3(settings.velocityValue.x, settings.velocityValue.y, settings.velocityValue.z),
                 spread: new THREE.Vector3(settings.velocitySpread.x, settings.velocitySpread.y, settings.velocitySpread.z)
+            },
+            drag: {
+                value: new THREE.Vector3(settings.dragValue.x, settings.dragValue.y, settings.dragValue.z),
+                spread: new THREE.Vector3(settings.dragSpread.x, settings.dragSpread.y, settings.dragSpread.z),
+                randomise: settings.dragRandomise
             },
             color: {
                 value: settings.color.map(function(c) { return new THREE.Color(c); })
