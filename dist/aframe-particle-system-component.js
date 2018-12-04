@@ -383,7 +383,7 @@ AFRAME.registerComponent('particle-system', {
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* shader-particle-engine 1.0.5
- * 
+ *
  * (c) 2015 Luke Moody (http://www.github.com/squarefeet)
  *     Originally based on Lee Stemkoski's original work (https://github.com/stemkoski/stemkoski.github.com/blob/master/Three.js/js/ParticleEngine.js).
  *
@@ -1294,7 +1294,7 @@ SPE.shaders = {
         THREE.ShaderChunk.common,
         THREE.ShaderChunk.logdepthbuf_pars_vertex,
         THREE.ShaderChunk.fog_pars_vertex,
-        
+
         SPE.shaderChunks.branchAvoidanceFunctions,
         SPE.shaderChunks.unpackColor,
         SPE.shaderChunks.unpackRotationAxis,
@@ -1305,6 +1305,7 @@ SPE.shaders = {
         SPE.shaderChunks.rotationFunctions,
 
 
+        'vec4 mvPosition;',
         'void main() {',
 
 
@@ -1357,7 +1358,7 @@ SPE.shaders = {
         '    #endif',
 
         // Convert pos to a world-space value
-        '    vec4 mvPos = modelViewMatrix * vec4( pos, 1.0 );',
+        '    vec4 mvPos = mvPosition = modelViewMatrix * vec4( pos, 1.0 );',
 
         // Determine point size.
         '    highp float pointSize = getFloatOverLifetime( positionInTime, size ) * isAlive;',
@@ -1431,7 +1432,7 @@ SPE.shaders = {
 
         THREE.ShaderChunk.logdepthbuf_vertex,
         THREE.ShaderChunk.fog_vertex,
-        
+
         '}'
     ].join( '\n' ),
 
@@ -1459,7 +1460,7 @@ SPE.shaders = {
 
         '    outgoingLight = vColor.xyz * rotatedTexture.xyz;',
 		'    gl_FragColor = vec4( outgoingLight.xyz, rotatedTexture.w * vColor.w );',
-        
+
         THREE.ShaderChunk.fog_fragment,
 
         '}'
