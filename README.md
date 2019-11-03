@@ -62,6 +62,20 @@ This component exposes only a subset of the [ShaderParticleEngine API](http://sq
 <a-entity position="0 2.25 -15" particle-system="preset: dust; texture: ./images/star2.png; color: #0000FF,#00FF00,#FF0000"></a-entity>
 ```
 
+### Functions
+
+#### startParticles
+Enables the emitters. Useful to start the animations when `enabled` is set to `false`.
+
+#### stopParticles
+Disables the emitters.
+
+### Usage
+```javascript
+this.el.components['particle-system'].startParticles();
+this.el.components['particle-system'].stopParticles();
+```
+
 ### Browser Installation
 
 Install and use by directly including the [browser files](dist).
