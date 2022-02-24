@@ -313,8 +313,7 @@
 	            type: {
 	                value: settings.type
 	            },
-	            position: {
-	                value: new THREE.Vector3(settings.positionSpread.x, settings.positionSpread.y, settings.positionSpread.z),
+	            position: {                
 	                spread: new THREE.Vector3(settings.positionSpread.x, settings.positionSpread.y, settings.positionSpread.z),
 	                randomise: settings.randomise
 	                //spreadClamp: new THREE.Vector3( 2, 2, 2 ),
