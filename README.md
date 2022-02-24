@@ -123,6 +123,12 @@ npm install
 npm run dev
 ```
 
+To rebuild:
+
+```
+npm run dist
+```
+
 ### Credits
 
 Based on the [ShaderParticleEngine by Squarefeet](https://github.com/squarefeet/ShaderParticleEngine).
