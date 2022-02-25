@@ -33,14 +33,16 @@ This component exposes only a subset of the [ShaderParticleEngine API](http://sq
 | dragSpread          | Number describing drag variance on a per-particle basis.                                                                                                                                                                                        | `0`                  |
 | dragRandomise       | WHen a particle is re-spawned, whether it's drag should be re-randomised or not. Can incur a performance hit.                                                                                                                                   | `false`              |
 | color               | Describes a particle's color. This property is a "value-over-lifetime" property, meaning an array of values can be given to describe specific value changes over a particle's lifetime.                                                         | `#0000FF,#FF0000`    |
-| size                | Describes a particle's size.                                                                                                                                                                                                                    | `1`                  |
+| size                | Describes a particle's size.  Either a single number, or an array of values can be given to describe specific value changes over a particle's lifetime.                                                                                   | `1`                  |
+| sizeSpread | Per-particle variation in size.  Either a single number, or an array of values can be given to describe specific value changes over a particle's lifetime. | 0 |
 | direction           | The direction of the emitter. If value is `1`, emitter will start at beginning of particle's lifecycle. If value is `-1`, emitter will start at end of particle's lifecycle and work it's way backwards.                                        | `1`                  |
 | duration            | The duration in seconds that this emitter should live for. If not specified, the emitter will emit particles indefinitely.                                                                                                                      | `null`               |
 | enabled             | When `true` the emitter will emit particles, when `false` it will not. This value can be changed dynamically during a scene. While particles are emitting, they will disappear immediately when set to `false`.  | `true`               |
 | particleCount       | The total number of particles this emitter will hold. NOTE: this is not the number of particles emitted in a second, or anything like that. The number of particles emitted per-second is calculated by particleCount / maxAge (approximately!) | `1000`               |
 | texture             | The texture used by this emitter.                                                                                                                                                                                                               | `./images/star2.png` |
 | randomise           | When a particle is re-spawned, whether it's position should be re-randomised or not. Can incur a performance hit.                                                                                                                               | `false`              |
-| opacity             | Either a single number to describe the opacity of a particle.                                                                                                                                                                                   | `1`                  |
+| opacity             | Either a single number to describe the opacity of a particle, or an array of values can be given to describe specific value changes over a particle's lifetime.                                                                               | `1`                  |
+| opacitySpread | Per-particle variation in opacity.  Either a single number, or an array of values can be given to describe specific value changes over a particle's lifetime. | 0 |
 | blending            | The blending mode of the particles. Possible values are `0` (no blending), `1` (normal), `2` (additive), `3` (subtractive), `4` (multiply)                                                                                                      | `2`                  |
 | maxParticleCount    |                                                                                                                                                                                                                                                 | `250000`             |
 
@@ -119,6 +121,12 @@ npm install aframe-particle-system-component
 ```
 npm install
 npm run dev
+```
+
+To rebuild:
+
+```
+npm run dist
 ```
 
 ### Credits
