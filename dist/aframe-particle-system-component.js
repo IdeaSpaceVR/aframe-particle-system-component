@@ -215,7 +215,7 @@
 	            velocityValue: {x: 0, y: 75, z: 0},
 	            velocitySpread: {x: 10, y: 50, z: 10},
 	            color: ['#FFFFFF'],
-	            size: 0.4,
+	            size: [0.4],
 	            texture: 'https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/raindrop.png'
 	        };
 
