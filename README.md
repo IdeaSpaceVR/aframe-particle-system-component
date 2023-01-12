@@ -6,11 +6,11 @@ Particle system component for [A-Frame](https://aframe.io).
 
 ### Examples
 
-- [Stars](https://ideaspacevr.github.io/aframe-particle-system-component/examples/stars/)
-- [Dust](https://ideaspacevr.github.io/aframe-particle-system-component/examples/dust/)
-- [Rain](https://ideaspacevr.github.io/aframe-particle-system-component/examples/rain/)
-- [Snow](https://ideaspacevr.github.io/aframe-particle-system-component/examples/snow/)
-- [Colors](https://ideaspacevr.github.io/aframe-particle-system-component/examples/colors/)
+- [Stars](https://c-frame.github.io/aframe-particle-system-component/examples/stars/)
+- [Dust](https://c-frame.github.io/aframe-particle-system-component/examples/dust/)
+- [Rain](https://c-frame.github.io/aframe-particle-system-component/examples/rain/)
+- [Snow](https://c-frame.github.io/aframe-particle-system-component/examples/snow/)
+- [Colors](https://c-frame.github.io/aframe-particle-system-component/examples/colors/)
 
 ### Properties
 
@@ -89,8 +89,8 @@ Install and use by directly including the [browser files](dist).
     <meta charset="utf-8">
     <title>A-Frame Particle System Component Example</title>
     <meta name="description" content="Hello, World!">
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-particle-system-component@1.1.4/dist/aframe-particle-system-component.min.js"></script>
   </head>
   <body>
     <a-scene>
