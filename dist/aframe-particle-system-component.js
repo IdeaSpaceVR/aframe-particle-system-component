@@ -215,7 +215,7 @@
 	            velocityValue: {x: 0, y: 75, z: 0},
 	            velocitySpread: {x: 10, y: 50, z: 10},
 	            color: ['#FFFFFF'],
-	            size: 0.4,
+	            size: [0.4],
 	            texture: 'https://cdn.rawgit.com/c-frame/aframe-particle-system-component/master/dist/images/raindrop.png'
 	        };
 
@@ -2281,7 +2281,7 @@
 	    options.texture = utils.ensureTypedArg( options.texture, types.OBJECT, {} );
 
 	    // Assign a UUID to this instance
-	    this.uuid = THREE.Math.generateUUID();
+	    this.uuid = THREE.MathUtils.generateUUID();
 
 	    // If no `deltaTime` value is passed to the `SPE.Group.tick` function,
 	    // the value of this property will be used to advance the simulation.
@@ -3143,7 +3143,7 @@
 	        console.warn( 'onParticleSpawn has been removed. Please set properties directly to alter values at runtime.' );
 	    }
 
-	    this.uuid = THREE.Math.generateUUID();
+	    this.uuid = THREE.MathUtils.generateUUID();
 
 	    this.type = utils.ensureTypedArg( options.type, types.NUMBER, SPE.distributions.BOX );
 
