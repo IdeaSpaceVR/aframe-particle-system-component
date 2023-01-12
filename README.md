@@ -90,7 +90,7 @@ Install and use by directly including the [browser files](dist).
     <title>A-Frame Particle System Component Example</title>
     <meta name="description" content="Hello, World!">
     <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-particle-system-component@master/dist/aframe-particle-system-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-particle-system-component@1.1.4/dist/aframe-particle-system-component.min.js"></script>
   </head>
   <body>
     <a-scene>
