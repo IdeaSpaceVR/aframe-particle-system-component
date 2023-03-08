@@ -7,19 +7,22 @@
     "example": "examples"
   },
   "devDependencies": {
-    "browserify": "^13.0.0",
-    "browserify-css": "^0.9.1",
-    "budo": "^8.2.2",
-    "randomcolor": "^0.4.4",
-    "semistandard": "^8.0.0",
-    "shelljs": "^0.7.0",
-    "shx": "^0.1.1",
-    "snazzy": "^4.0.0",
-    "webpack": "^1.13.0"
+    "@webpack-cli/generators": "^3.0.1",
+    "browserify": "^17.0.0",
+    "browserify-css": "^0.15.0",
+    "budo": "^11.8.4",
+    "randomcolor": "^0.6.2",
+    "semistandard": "^16.0.1",
+    "shelljs": "^0.8.5",
+    "shx": "^0.3.4",
+    "snazzy": "^9.0.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "scripts": {
-    "dev": "budo index.js:../../dist/aframe-particle-system-component.min.js --port 8000 --live --open",
-    "dist": "webpack index.js dist/aframe-particle-system-component.js && webpack -p index.js dist/aframe-particle-system-component.min.js",
+    "watch": "webpack --watch --mode development --output-filename aframe-particle-system-component.js",
+    "dev": "budo index.js:../../dist/aframe-particle-system-component.min.js --port 8000 --live --open --ssl --cors",
+    "dist": "webpack --mode development --output-filename aframe-particle-system-component.js && webpack",
     "lint": "semistandard -v | snazzy",
     "prepublish": "npm run dist",
     "preghpages": "npm run build && shx rm -rf gh-pages && shx mkdir gh-pages && shx cp -r examples/* gh-pages",
