@@ -169,7 +169,7 @@ AFRAME.registerComponent('particle-system', {
             velocityValue: {x: 0, y: 75, z: 0},
             velocitySpread: {x: 10, y: 50, z: 10},
             color: ['#FFFFFF'],
-            size: 0.4,
+            size: [0.4],
             texture: 'https://cdn.rawgit.com/IdeaSpaceVR/aframe-particle-system-component/master/dist/images/raindrop.png'
         };
 
@@ -267,7 +267,7 @@ AFRAME.registerComponent('particle-system', {
             type: {
                 value: settings.type
             },
-            position: {                
+            position: {
                 spread: new THREE.Vector3(settings.positionSpread.x, settings.positionSpread.y, settings.positionSpread.z),
                 randomise: settings.randomise
                 //spreadClamp: new THREE.Vector3( 2, 2, 2 ),
@@ -293,11 +293,11 @@ AFRAME.registerComponent('particle-system', {
                 randomise: settings.dragRandomise
             },
             color: {
-                value: settings.color.map(function(c) { return new THREE.Color(c); })            
+                value: settings.color.map(function(c) { return new THREE.Color(c); })
             },
             size: { value: settings.size.map(function (s) { return parseFloat(s); }),
                     spread: settings.sizeSpread.map(function (s) { return parseFloat(s); }) },
-            
+
             /*wiggle: { value: 4, spread: 2 }, //settings.wiggle,*/
             /*drag: {
                 value: settings.drag
@@ -307,7 +307,7 @@ AFRAME.registerComponent('particle-system', {
             },
             duration: settings.duration,
             opacity: { value: settings.opacity.map(function (o) { return parseFloat(o); }),
-                       spread: settings.opacitySpread.map(function (o) { return parseFloat(o); }) },            
+                       spread: settings.opacitySpread.map(function (o) { return parseFloat(o); }) },
             particleCount: settings.particleCount
         });
 
